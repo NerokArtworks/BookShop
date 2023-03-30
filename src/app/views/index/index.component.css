@@ -1,0 +1,27 @@
+.hero {
+  min-height: 92vh;
+}
+
+main {
+  padding-top: 8vh;
+}
+
+.nav-margin {
+  top: 8vh;
+}
+
+.hero-title {
+  font-size: 5rem;
+  line-height: 5rem;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+.dashed {
+  border: none;
+  height: 1px;
+  background: #000;
+  background: repeating-linear-gradient(90deg,#000,#000 6px,transparent 6px,transparent 12px);
+}

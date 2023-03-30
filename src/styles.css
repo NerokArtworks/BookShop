@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'OptimaTL_Regular';
+}
+
+h1, h2, h3, h4 {
+  font-family: 'OptimaTL_Light';
+}
+
+h4, p, span {
+  /* font-family: 'PerpetuaTiltingMT_Regular'; */
+}
+
+@font-face {
+  font-family: 'OptimaTL_Regular';
+  src: url(./assets/fonts/OptimaTLPro/OptimaNovaLTProRegular.otf);
+}
+
+@font-face {
+  font-family: 'OptimaTL_Light';
+  src: url(./assets/fonts/OptimaTLPro/OptimaNovaLTProLight.otf);
+}
+
+@font-face {
+  font-family: 'PerpetuaTiltingMT_Regular';
+  src: url(./assets/fonts/PerpetuaTiltingMT/PERTILI.TTF);
+}
