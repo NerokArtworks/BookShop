@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,11 +10,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { PoesiaComponent } from './components/sections/poesia/poesia.component';
 import { EBooksComponent } from './components/sections/e-books/e-books.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthorsComponent } from './views/authors/authors.component';
+import { PrimaryButtonComponent } from './components/primary-button/primary-button.component';
+import { CestaButtonComponent } from './components/cesta-button/cesta-button.component';
+import { BannerComponent } from './components/banner/banner.component';
+import { ShowBookComponent } from './views/books/show-book/show-book.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoaderModule } from './components/loader/loader.module';
 
 const appRoutes:Routes = [
-  {path: 'index', component:IndexComponent},
-  {path: '**', redirectTo:"index"},
-  {path: ' ', redirectTo:"index"}
+  {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
+  {path: 'autores', component:AuthorsComponent, data: { animation: 'fader'}},
+  {path: 'index', component:IndexComponent, data: { animation: 'fader'}},
+  {path: '**', redirectTo:"index", data: { animation: 'fader'}},
+  {path: ' ', redirectTo:"index", data: { animation: 'fader'}}
 ]
 
 @NgModule({
@@ -23,13 +33,21 @@ const appRoutes:Routes = [
     NavbarComponent,
     PoesiaComponent,
     EBooksComponent,
-    FooterComponent
+    FooterComponent,
+    AuthorsComponent,
+    PrimaryButtonComponent,
+    CestaButtonComponent,
+    BannerComponent,
+    ShowBookComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    LoaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

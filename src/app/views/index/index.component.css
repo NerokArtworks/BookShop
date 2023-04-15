@@ -1,27 +1,31 @@
-.hero {
-  min-height: 92vh;
-}
-
-main {
-  padding-top: 8vh;
-}
-
-.nav-margin {
-  top: 8vh;
-}
-
 .hero-title {
-  font-size: 5rem;
-  line-height: 5rem;
+  font-size: 5vw;
+  line-height: 5vw;
 }
 
 .title {
-  font-size: 4rem;
+  font-size: 4vw;
 }
 
-.dashed {
-  border: none;
-  height: 1px;
-  background: #000;
-  background: repeating-linear-gradient(90deg,#000,#000 6px,transparent 6px,transparent 12px);
+.intro {
+  /* font-size: .9vw; */
+}
+
+main {
+  padding-top: 10vh;
+}
+
+.book:hover > .price {
+  opacity: 100;
+  transform: translate(-50%, 0);
+}
+
+.hero {
+  max-height: 90vh;
+}
+
+@media only screen and (max-width: 1200px) {
+  .hero {
+    max-height: none;
+  }
 }

@@ -29,3 +29,24 @@ h4, p, span {
   font-family: 'PerpetuaTiltingMT_Regular';
   src: url(./assets/fonts/PerpetuaTiltingMT/PERTILI.TTF);
 }
+
+/* shared styles */
+.hero {
+  min-height: 92vh;
+}
+
+.nav-margin {
+  top: 10vh;
+}
+
+main {
+  padding-top: 10vh;
+}
+
+
+.dashed {
+  border: none;
+  height: 1px;
+  background: #000;
+  background: repeating-linear-gradient(90deg,#000,#000 6px,transparent 6px,transparent 12px);
+}
