@@ -11,6 +11,8 @@ import { RestService } from 'src/app/services/api/rest.service';
 export class ShowBookComponent implements OnInit{
   public id!: string | null;
   public libro!: Libro;
+  selectedType!: string;
+
   constructor(private LibroService: RestService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {

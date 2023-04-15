@@ -24,19 +24,25 @@ export class RestService {
     return this.http.get<Libro[]>(this.apiUrl + '/libros/obtener');
   }
 
+  // POST que devuelve un observable de array de objetos del tipo Proyecto de la interface
+  getLibrosByAutor(autor: string) {
+    const body = { autor: autor };
+    return this.http.post<Libro[]>(this.apiUrl + '/libros/getByAutor', body);
+  }
+
   // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
   public getPedidos(): Observable<Pedido[]> {
     return this.http.get<Pedido[]>(this.apiUrl + '/pedido/obtener');
   }
 
   // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
-  public getLibro(id: string | null): Observable<Libro> {
+  public getLibro(id: any): Observable<Libro> {
     const url = `${this.apiUrl}/libros/obtener1`;
     const body = { id: id };
     return this.http.post<Libro>(url, body);
   }
 
-  // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
+  // POST que devuelve un observable de array de objetos del tipo Proyecto de la interface
   public getPedido(id: string | null): Observable<Pedido> {
     const url = `${this.apiUrl}/pedido/obtener1`;
     const body = { id: id };

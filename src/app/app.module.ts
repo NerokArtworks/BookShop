@@ -17,6 +17,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { ShowBookComponent } from './views/books/show-book/show-book.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderModule } from './components/loader/loader.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes:Routes = [
   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
@@ -48,6 +49,8 @@ const appRoutes:Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     LoaderModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
