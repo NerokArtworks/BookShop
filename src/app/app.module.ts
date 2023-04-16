@@ -18,8 +18,10 @@ import { ShowBookComponent } from './views/books/show-book/show-book.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderModule } from './components/loader/loader.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './views/cart/cart.component';
 
 const appRoutes:Routes = [
+  {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
   {path: 'autores', component:AuthorsComponent, data: { animation: 'fader'}},
   {path: 'index', component:IndexComponent, data: { animation: 'fader'}},
@@ -39,7 +41,8 @@ const appRoutes:Routes = [
     PrimaryButtonComponent,
     CestaButtonComponent,
     BannerComponent,
-    ShowBookComponent
+    ShowBookComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

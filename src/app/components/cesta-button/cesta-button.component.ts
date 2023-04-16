@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Libro } from 'src/app/interfaces/Libro';
 import { RestService } from 'src/app/services/api/rest.service';
+import { CestaService } from 'src/app/services/cesta-service.service';
 
 @Component({
   selector: 'app-cesta-button',
@@ -11,10 +12,14 @@ export class CestaButtonComponent implements OnInit{
   @Input() id!: string | null | number | undefined;
   libro!: Libro;
 
-  constructor (private LibroService: RestService) { }
+  constructor (private LibroService: RestService, private CestaService: CestaService) { }
 
   ngOnInit(): void {
-    this.LibroService.getLibro(this.id).subscribe(libro => { (this.libro = libro); console.log(libro); });
+    // Controlar que id no sea null porque intenta hacer la solicitud antes de tener el valor de id
+    console.log("Viendo libro id: " + this.id);
+    if (this.id != null && this.id != undefined) {
+      this.LibroService.getLibro(this.id).subscribe(libro => { (this.libro = libro); });
+    }
 
     const cookieName = 'carrito';
     const expiryHours = 12;
@@ -42,11 +47,14 @@ export class CestaButtonComponent implements OnInit{
     console.log(`Carrito: ${carrito}`);
     // Agregar un nuevo libro al array
     // Borro la descripcion y la sinopsis para liberar espacio de la cookie
-    this.libro.descripcion = "";
-    this.libro.sinopsis = "";
+    // this.libro.descripcion = "";
+    // this.libro.sinopsis = "";
     carrito.push(this.libro);
     // Guardar la cookie actualizada
     this.setCookie("carrito", JSON.stringify(carrito), 7);
+
+    // CESTASERVICE
+    this.CestaService.addItem(this.libro);
   }
 
   // Función para obtener el valor de una cookie por su nombre

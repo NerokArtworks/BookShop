@@ -17,4 +17,5 @@ export interface Libro {
     rating: number;
     stock: string;
     oferta?: string;
+    cantidad: number;
 }
