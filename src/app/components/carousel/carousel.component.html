@@ -1,0 +1,39 @@
+<div *ngIf="showSlider" class="flex items-center justify-center w-full h-full sm:pb-8 select-none">
+  <div class="slide-container swiper" id="slider" #slider>
+    <div class="slide-content">
+      <div class="card-wrapper swiper-wrapper">
+
+        <div class="relative card swiper-slide text-center" *ngFor="let l of librosBrandonShow">
+          <div class="relative book hover:brightness-110">
+            <a href="/ver/{{l.id}}">
+              <img
+                class="w-64 h-64 md:w-40 md:h-40 lg:w-full lg:h-full mx-auto object-cover transition-all duration-200 cursor-pointer rounded-md"
+                src="../../../assets/img/{{l.portada}}" alt="Carátula {{l.titulo}}" loading="load" width="100%"
+                height="auto" />
+            </a>
+            <div
+              class="price drop-shadow-md rounded-md p-2 flex flex-col gap-1 transition absolute w-full h-auto opacity-0 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
+              <span *ngIf="l.tipo == 'tapadura'">Tapa dura</span>
+              <div class="grid place-items-center grid-cols-2 mx-2 border-t border-gray-400">
+                <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
+                  {{l.precio}} €</span>
+                <span class="text-orange-500 font-black">{{l.oferta}} €</span>
+              </div>
+              <app-cesta-button [id]="l.id"></app-cesta-button>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h4 class="text-2xl text-gray-900 dark:text-gray-50">{{l.titulo}}</h4>
+            <span class="text-sm text-gray-600 dark:text-gray-50">({{l.saga}})</span>
+            <span class="block text-sm text-orange-500 capitalize">{{l.autor}}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="swiper-button-next swiper-navBtn hover:scale-150 transition origin-left duration-200 ease p-2" (click)="nextSlide()"></div>
+    <div class="swiper-button-prev swiper-navBtn hover:scale-150 transition origin-right duration-200 ease p-2" (click)="prevSlide()"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>

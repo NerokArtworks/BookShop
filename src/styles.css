@@ -7,6 +7,12 @@ html {
   font-family: 'OptimaTL_Regular';
 }
 
+* {
+  -webkit-font-smoothing: subpixel-antialiased;
+  backface-visibility: hidden;
+  image-rendering: optimizeQuality;
+}
+
 h1, h2, h3, h4 {
   font-family: 'OptimaTL_Light';
 }

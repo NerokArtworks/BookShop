@@ -1,0 +1,4 @@
+.book:hover > .price {
+    opacity: 100;
+    transform: translate(-50%, 0);
+}

@@ -20,6 +20,5 @@ export class ShowBookComponent implements OnInit{
     this.id = id;
     console.log("Viendo libro id: " + this.id);
     this.LibroService.getLibro(id).subscribe(libro => {(this.libro = libro); console.log(libro); this.libro.oferta = (this.libro.precio * 0.95).toFixed(2)});
-
   }
 }

@@ -1,0 +1,51 @@
+.book {
+    width: 100%;
+}
+
+.book:hover > .price {
+    opacity: 100;
+    transform: translate(-50%, 0);
+}
+
+.backward {
+    /* left: -5vw !important; */
+    left: -2.5vw;
+}
+
+.forward {
+    right: -2.5vw;
+}
+
+@media only screen and (max-width: 750px) {
+    .book {
+        width: 100%;
+    }
+    .card {
+        width: 80vw;
+    }
+}
+
+.slide-container{
+  max-width: 1120px;
+  width: 100%;
+  padding: 40px 0;
+}
+.slide-content{
+  margin: 0 40px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.card{
+  border-radius: 25px;
+  background-color: #FFF;
+}
+
+
+@media screen and (max-width: 768px) {
+  .slide-content{
+    margin: 0 10px;
+  }
+  .swiper-navBtn{
+    display: none !important;
+  }
+}

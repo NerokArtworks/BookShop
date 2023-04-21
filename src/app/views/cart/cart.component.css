@@ -8,3 +8,16 @@ input[type="number"]::-webkit-outer-spin-button {
 main {
   min-height: 100vh;
 }
+
+.pay-card {
+  top: 7.5rem;
+}
+
+.main {
+  padding-top: 10vh;
+}
+
+.hero-title {
+  font-size: 2.5vw;
+  line-height: 2.5vw;
+}

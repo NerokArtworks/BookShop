@@ -19,10 +19,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoaderModule } from './components/loader/loader.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './views/cart/cart.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FeedComponent } from './views/books/feed/feed.component';
 
 const appRoutes:Routes = [
   {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
+  {path: 'genero/:id', component:FeedComponent, data: { animation: 'fader'}},
   {path: 'autores', component:AuthorsComponent, data: { animation: 'fader'}},
   {path: 'index', component:IndexComponent, data: { animation: 'fader'}},
   {path: '**', redirectTo:"index", data: { animation: 'fader'}},
@@ -42,7 +45,9 @@ const appRoutes:Routes = [
     CestaButtonComponent,
     BannerComponent,
     ShowBookComponent,
-    CartComponent
+    CartComponent,
+    CarouselComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,
