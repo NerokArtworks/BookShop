@@ -15,6 +15,7 @@ export class IndexComponent implements OnInit{
   librosBrandonShow: Libro[] = [];
   librosRobert: Libro[] = [];
   librosRobertShow: Libro[] = [];
+  librosManga: Libro[] = [];
   constructor(private LibroService: RestService) { }
 
   ngOnInit(): void {
@@ -28,6 +29,10 @@ export class IndexComponent implements OnInit{
       if (l.id == 1 || l.id == 3 || l.id == 7 || l.id == 11) {
         l.oferta = (l.precio * 0.95).toFixed(2);
         this.librosHero.push(l);
+      }
+      if (l.genero == "Manga") {
+        l.oferta = (l.precio * 0.95).toFixed(2);
+        this.librosManga.push(l);
       }
     });
   }

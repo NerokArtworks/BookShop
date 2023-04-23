@@ -1,38 +1,44 @@
-<main class="main-wrapper relative">
-    <section *ngIf="pageLoaded" class="md:max-w-screen-md transition-all xl:max-w-screen-xl mx-auto min-h-screen nav-margin mb-20">
-        <!-- section header -->
-        <header class="text-center mx-auto mb-12">
-            <h2 class="text-2xl leading-normal capitalize hero-title mb-2 font-bold text-gray-800 dark:text-gray-100">
-                {{libros[0].genero}}
-            </h2>
-        </header>
+<main class="main-wrapper relative feed">
+  <aside class="w-full py-5 relative bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0]">
+    <div class="container xl:max-w-6xl mx-auto font-bold">
+        <span class="font-light"><a href="/home" class="hover:underline hover:text-orange-500 px-1">Inicio</a>/ </span>{{libros[0].genero}}
+    </div>
+  </aside>
 
-        <div class="grid gap-y-10 gap-x-2 xl:w-10/12 2xl:w-full mx-auto items-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            <!-- Item 1 -->
-            <div class="relative space-y-4 text-center" *ngFor="let l of libros">
-              <div class="relative book hover:brightness-110 hover:drop-shadow-lg">
-                <a href="/ver/{{l.id}}">
-                  <img class="w-64 h-64 md:w-10/12 md:h-full mx-auto object-cover md:object-cover cursor-pointer rounded-xl"
-                src="../../../assets/img/{{l.portada}}" alt="Carátula {{l.titulo}}" loading="lazy" />
-                </a>
-                <div class="price drop-shadow-md rounded-xl p-2 flex flex-col gap-1 transition absolute w-full h-auto opacity-0 lg:w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
-                    <span *ngIf="l.tipo == 'tapadura'">Tapa dura</span>
-                    <span *ngIf="l.tipo == 'tapablanda'">Tapa blanda</span>
-                    <span *ngIf="l.tipo == 'ebook'">eBook</span>
-                  <div class="grid place-items-center grid-cols-2 mx-2 border-t border-gray-400">
-                    <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
-                      {{l.precio}} €</span>
-                    <span class="text-orange-500 font-black">{{l.oferta}} €</span>
-                  </div>
-                  <app-cesta-button [id]="l.id"></app-cesta-button>
+  <section *ngIf="pageLoaded" class="md:max-w-screen-md transition-all xl:max-w-screen-xl mx-auto min-h-screen nav-margin mb-20">
+      <!-- section header -->
+      <header class="text-center mx-auto mb-12">
+          <h2 class="text-2xl leading-normal capitalize hero-title mb-2 font-bold text-gray-800 dark:text-gray-100">
+              {{libros[0].genero}}
+          </h2>
+      </header>
+
+      <div class="grid gap-y-10 gap-x-2 xl:w-10/12 2xl:w-full mx-auto items-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <!-- Item 1 -->
+          <div class="relative space-y-4 text-center" *ngFor="let l of libros">
+            <div class="relative book hover:brightness-110 hover:drop-shadow-lg">
+              <a href="/ver/{{l.id}}">
+                <img class="w-64 h-64 md:w-10/12 md:h-full mx-auto object-cover md:object-cover cursor-pointer rounded-xl"
+              src="../../../assets/img/{{l.portada}}" alt="Carátula {{l.titulo}}" loading="lazy" />
+              </a>
+              <div class="price drop-shadow-md rounded-xl p-2 flex flex-col gap-1 transition absolute w-full h-auto opacity-0 lg:w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
+                  <span *ngIf="l.tipo == 'tapadura'">Tapa dura</span>
+                  <span *ngIf="l.tipo == 'tapablanda'">Tapa blanda</span>
+                  <span *ngIf="l.tipo == 'ebook'">eBook</span>
+                <div class="grid place-items-center grid-cols-2 mx-2 border-t border-gray-400">
+                  <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
+                    {{l.precio}} €</span>
+                  <span class="text-orange-500 font-black">{{l.oferta}} €</span>
                 </div>
-              </div>
-              <div>
-                <h4 class="text-2xl text-gray-900 dark:text-gray-50 uppercase">{{l.titulo}}</h4>
-                <span class="text-xs 2xl:text-sm text-gray-600 dark:text-gray-50 uppercase">({{l.saga}})</span>
-                <span class="block text-sm text-orange-500 capitalize">{{l.autor}}</span>
+                <app-cesta-button [id]="l.id"></app-cesta-button>
               </div>
             </div>
+            <div>
+              <h4 class="text-2xl text-gray-900 dark:text-gray-50 uppercase">{{l.titulo}}</h4>
+              <span class="text-xs 2xl:text-sm text-gray-600 dark:text-gray-50 uppercase">({{l.saga}})</span>
+              <span class="block text-sm text-orange-500 capitalize">{{l.autor}}</span>
+            </div>
           </div>
-    </section>
+        </div>
+  </section>
 </main>
