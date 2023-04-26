@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef, Input } from '@angular/core';
 import { Libro } from 'src/app/interfaces/Libro';
 import { RestService } from 'src/app/services/api/rest.service';
 import Swiper from 'swiper';
@@ -13,12 +13,13 @@ import Swiper from 'swiper';
 })
 export class CarouselComponent {
   @ViewChild('slider', {static: false}) slider!: ElementRef;
+  @Input() autor!: string;
 
   swiper!: Swiper;
 
   // Libros que muestra
-  librosBrandon: Libro[] = [];
-  librosBrandonShow: Libro[] = [];
+  libros: Libro[] = [];
+  librosShow: Libro[] = [];
 
   showSlider: boolean = false;
 
@@ -26,15 +27,17 @@ export class CarouselComponent {
 
   // Cargar libros
   ngOnInit(): void {
-    this.LibroService.getLibrosByAutor("Brandon Sanderson").subscribe(libro => { (this.librosBrandon = libro); console.log(libro); this.loadBrandon(); });
+    if (this.autor) {
+      this.LibroService.getLibrosByAutor(this.autor).subscribe(libro => { (this.libros = libro); console.log(libro); this.loadBooks(); });
+    }
   }
 
   // Libros a mostrar
-  loadBrandon() {
-    this.librosBrandon.forEach(l => {
+  loadBooks() {
+    this.libros.forEach(l => {
       // if (l.id == 8 || l.id == 12 || l.id == 4 || l.id == 13) {
         l.oferta = (l.precio * 0.95).toFixed(2);
-        this.librosBrandonShow.push(l);
+        this.librosShow.push(l);
       // }
     });
     this.showSlider = true;
@@ -93,5 +96,5 @@ export class CarouselComponent {
     console.log("Slide prev");
     this.swiper.slidePrev();
   }
-    
+
 }
