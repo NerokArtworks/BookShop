@@ -39,8 +39,8 @@ export class FeedComponent implements OnInit {
         l.oferta = (l.precio * 0.95).toFixed(2);
         that.generos.forEach(g => {
           if (l.id_genero == g.id) {
-            l.genero == g.nombre;
-            that.genero == l.genero;
+            l.genero = g.nombre;
+            that.genero = l.genero;
             that.pageLoaded = true;
             console.log("Libro encontrado: ", l, "Género: ", that.genero);
           }

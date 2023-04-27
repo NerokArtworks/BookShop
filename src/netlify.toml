@@ -1,0 +1,24 @@
+[[redirects]]
+  from = "/cesta"
+  to = "/index.html"
+
+[[redirects]]
+  from = "/ver/:id"
+  to = "/index.html"
+
+[[redirects]]
+  from = "/genero/:id"
+  to = "/index.html"
+
+[[redirects]]
+  from = "/autores"
+  to = "/index.html"
+
+[[redirects]]
+  from = "/index"
+  to = "/index.html"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './views/index/index.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { RouterModule, Routes } from '@angular/router';
 import { PoesiaComponent } from './components/sections/poesia/poesia.component';
 import { EBooksComponent } from './components/sections/e-books/e-books.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -21,16 +20,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './views/cart/cart.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FeedComponent } from './views/books/feed/feed.component';
+import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/logout/logout.component';
 
-const appRoutes:Routes = [
-  {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
-  {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
-  {path: 'genero/:id', component:FeedComponent, data: { animation: 'fader'}},
-  {path: 'autores', component:AuthorsComponent, data: { animation: 'fader'}},
-  {path: 'index', component:IndexComponent, data: { animation: 'fader'}},
-  {path: '**', redirectTo:"index", data: { animation: 'fader'}},
-  {path: ' ', redirectTo:"index", data: { animation: 'fader'}}
-]
+// const appRoutes:Routes = [
+//   {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
+//   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
+//   {path: 'genero/:id', component:FeedComponent, data: { animation: 'fader'}},
+//   {path: 'autores', component:AuthorsComponent, data: { animation: 'fader'}},
+//   {path: 'index', component:IndexComponent, data: { animation: 'fader'}},
+//   {path: '**', redirectTo:"index", data: { animation: 'fader'}},
+//   {path: ' ', redirectTo:"index", data: { animation: 'fader'}}
+// ]
 
 @NgModule({
   declarations: [
@@ -47,14 +48,16 @@ const appRoutes:Routes = [
     ShowBookComponent,
     CartComponent,
     CarouselComponent,
-    FeedComponent
+    FeedComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RouterModule,
-    RouterModule.forRoot(appRoutes),
+    // RouterModule,
+    // RouterModule.forRoot(appRoutes),
     HttpClientModule,
     LoaderModule,
     FormsModule,

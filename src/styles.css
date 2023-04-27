@@ -7,6 +7,19 @@ html {
   font-family: 'OptimaTL_Regular';
 }
 
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 14px; background-color: transparent; }
+::-webkit-scrollbar-thumb { background-color: #ffa43c; }
+
+::-moz-scrollbar { width: 14px; background-color: transparent; }
+::-moz-scrollbar-thumb { background-color: #ffa43c; }
+
+::-ms-scrollbar { width: 14px; background-color: transparent; }
+::-ms-scrollbar-thumb { background-color: #ffa43c; }
+
 * {
   -webkit-font-smoothing: subpixel-antialiased;
   backface-visibility: hidden;
@@ -47,6 +60,14 @@ h4, p, span {
 
 main {
   padding-top: 10vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.breadcumb {
+  top: 10vh;
+  height: 5vh;
+  z-index: 50;
 }
 
 

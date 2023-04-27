@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Usuarios } from "../interfaces/usuarios";
+import { Usuario } from "../interfaces/Usuario";
 import { tap } from 'rxjs/operators';
 
 export interface LoginResponse {
@@ -14,7 +14,7 @@ export interface LoginResponse {
 
 export class AuthService {
 
-  private readonly apiUrl="http://localhost:8080/usuaria/autentica";
+  private readonly apiUrl="http://localhost:8080/usuario/login";
   private readonly tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {
