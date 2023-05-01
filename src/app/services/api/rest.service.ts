@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Libro } from 'src/app/interfaces/Libro';
 import { Pedido } from 'src/app/interfaces/Pedido';
 import { Genero } from 'src/app/interfaces/Genero';
+import { Usuario } from 'src/app/interfaces/Usuario';
 
 // Cabeceras indicando el tipo de información a enviar
 const httpOptions={
@@ -53,6 +54,11 @@ export class RestService {
 
   public getGeneros() {
     return this.http.get<Genero[]>(this.apiUrl + '/generos/obtener');
+  }
+
+  public registerUser(user: Usuario) {
+    // const body = { id: id };
+    return this.http.post<Libro[]>(this.apiUrl + '/usuarios/register', user);
   }
 
   // POST que devuelve un observable de array de objetos del tipo Proyecto de la interface

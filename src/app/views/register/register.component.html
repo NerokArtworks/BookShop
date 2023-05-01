@@ -1,0 +1,102 @@
+<!-- component -->
+<div class="bg-white">
+    <div class="flex justify-center h-screen">
+        <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url('../../../assets/img/fire.jpg'); background-position: center; background-attachment: fixed; background-size: cover;">
+            <!-- background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) -->
+            <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
+                <div>
+                    <h2 class="text-4xl font-bold text-white">WhatTheBook</h2>
+                    
+                    <p class="max-w-xl mt-3 text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
+            <div class="flex-1">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-center text-gray-700">WhatTheBook</h2>
+                    
+                    <p class="mt-3 text-gray-500">Regístrate para crear tu cuenta</p>
+                </div>
+
+                <div class="mt-3 form-feedback-container">
+                    <!-- Div para mostrar mensaje de feedback -->
+                    <div *ngIf="showWarn" class="form-feedback text-center text-sm text-gray-900" [ngClass]="{'active': !formulario.valid}">
+                        Por favor, rellene todos los campos requeridos.
+                    </div>
+                </div>
+
+                <div>
+                    <form #formulario="ngForm" (ngSubmit)="register(formulario)">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label for="username" class="text-sm text-gray-600">Usuario *</label>
+                            </div>
+                            <input autocomplete="off" ngModel required type="text" name="username" id="username" placeholder="Tu usuario" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="nombre" class="text-sm text-gray-600">Nombre *</label>
+                                </div>
+                                <input autocomplete="off" ngModel required type="text" name="nombre" id="nombre" placeholder="Tu nombre" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="apellidos" class="text-sm text-gray-600">Apellidos *</label>
+                                </div>
+                                <input autocomplete="off" ngModel required type="text" name="apellidos" id="apellidos" placeholder="Tus apellidos" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label for="email" class="block mb-2 text-sm text-gray-600">Correo electrónico *</label>
+                            <input type="email" autocomplete="off" ngModel required id="email" name="email" placeholder="example@example.com" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="dni" class="text-sm text-gray-600">DNI *</label>
+                                </div>
+                                <input autocomplete="off" ngModel required type="text" name="dni" id="dni" placeholder="Tu DNI" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="fecha_nac" class="text-sm text-gray-600">Fecha de Nacimiento *</label>
+                                </div>
+                                <input autocomplete="off" ngModel required type="date" name="fecha_nac" id="fecha_nac" placeholder="" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <div class="flex justify-between mb-2">
+                                <label for="password" class="text-sm text-gray-600">Contraseña *</label>
+                            </div>
+                            <input autocomplete="off" ngModel required type="password" name="password" id="password" placeholder="Tu contraseña" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        </div>
+
+                        <div class="mt-6">
+                            <div class="flex justify-between mb-2">
+                                <label for="password2" class="text-sm text-gray-600">Repite la contraseña *</label>
+                            </div>
+                            <input autocomplete="off" ngModel required type="password" name="password2" id="password2" placeholder="Tu contraseña" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        </div>
+
+                        <div class="mt-6">
+                            <button
+                                class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-400 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-orange-300 focus:ring-opacity-50">
+                                Registrarme
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <p class="mt-6 text-sm text-center text-gray-400">Ya tienes una cuenta? <a href="/login" class="text-orange-500 focus:outline-none focus:underline hover:underline">Inicia sesión</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

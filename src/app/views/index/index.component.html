@@ -4,9 +4,10 @@
     <!-- component -->
     <div class="grid items-center h-full">
       <div class="container flex flex-col w-full h-full justify-evenly mx-auto px-6 md:px-16 xl:px-32">
-        <div class="2xl:mb-5 text-center">
-          <h2 class="mb-1 2xl:mb-4 text-center text-9xl drop-shadow-lg uppercase text-gray-900 font-light md:text-4xl hero-title">
-            libros & EBOOKS para todo el mundo
+        <div class="2xl:mb-5 text-center flex flex-col gap-5 md:gap-2">
+          <h2 class="mb-1 2xl:mb-4 text-center text-3xl sm:text-5xl md:text-5xl lg:text-7xl 2xl:text-8xl drop-shadow-lg uppercase text-gray-900 font-light md:text-4xl hero-title">
+            libros & EBOOKS para
+            <span class="flex w-full justify-center">todo el mundo</span>
           </h2>
           <p class="text-gray-600 lg:w-10/12 lg:mx-auto intro">
             —¿Alguien ha dicho libros? Ah... sí, esto es una tienda online de libros. —dijo el comerciante—.
@@ -15,15 +16,15 @@
           </p>
           <i class="fa-solid fa-chevron-down 2xl:mt-6"></i>
         </div>
-        <div class="grid gap-12 xl:w-10/12 2xl:w-full mx-auto items-start md:grid-cols-4">
+        <div class="grid gap-12 transition-all duration-200 xl:w-10/12 2xl:w-full mx-auto items-start md:grid-cols-4 mt-5 md:mt-0">
           <!-- Item 1 -->
           <div class="relative space-y-4 text-center" *ngFor="let l of librosHero">
-            <div class="relative book hover:brightness-110 hover:drop-shadow-lg">
+            <div class="relative book transition duration-200">
               <a href="/ver/{{l.id}}">
-                <img class="w-64 h-64 md:w-40 md:h-40 lg:w-10/12 lg:h-full mx-auto object-cover cursor-pointer rounded-xl"
+                <img class="w-64 h-64 md:w-40 md:h-40 lg:w-10/12 lg:h-full mx-auto transition duration-200 hover:brightness-110 hover:drop-shadow-lg object-contain md:object-cover cursor-pointer rounded-xl"
               src="../../../assets/img/{{l.portada}}" alt="Carátula {{l.titulo}}" loading="lazy" />
               </a>
-              <div class="price drop-shadow-md rounded-xl p-2 flex flex-col gap-1 transition absolute w-full h-auto opacity-0 lg:w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
+              <div class="price drop-shadow-md rounded-xl p-2 hidden md:flex flex-col gap-1 transition absolute w-full h-auto opacity-0 lg:w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
                 <span *ngIf="l.tipo == 'tapadura'">Tapa dura</span>
                 <div class="grid place-items-center grid-cols-2 mx-2 border-t border-gray-400">
                   <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
@@ -65,7 +66,7 @@
           ambas situadas en el aclamado universo “Cosmere” creado por Brandon.
         </p>
       </div>
-      <app-carousel [autor]="'Brandon Sanderson'"></app-carousel>
+      <app-carousel [autor]="'Brandon Sanderson'" [id]="'1'"></app-carousel>
     </article>
 
     <!-- Divisor -->
@@ -89,16 +90,18 @@
           La Rueda del Tiempo, compuesta por un total de catorce libros y una precuela en su edición original.
         </p>
       </div>
-      <app-carousel [autor]="'Robert Jordan'"></app-carousel>
+      <app-carousel [autor]="'Robert Jordan'" [id]="'2'"></app-carousel>
     </article>
 
-    <div class="flex justify-center gap-4">
-      <a href="/autores"><button
-          class="font-medium text-[16px] flex items-center px-5 py-3 md:py-4 md:px-8 rounded-xl bg-gradient-to-r from-orange-300 to-orange-500 hover:from-pink-500 hover:to-yellow-500  relative gap-2 transition duration-300 hover:scale-105 text-white shadow-glass ">
+    <div class="flex justify-center gap-4 mt-10">
+      <a href="/genero/1">
+        <button
+          class="font-medium text-[16px] flex items-center px-5 py-3 md:py-4 md:px-8 rounded-xl bg-gradient-to-r from-orange-300 to-orange-500 hover:from-orange-500 hover:to-yellow-500  relative gap-2 transition duration-300 hover:scale-105 text-white shadow-glass ">
           Descubrir más
           <span
               class="animate-ping absolute right-0 top-0 w-3 h-3  rounded-full bg-gradient-to-r from-orange -400 to-orange-700 "></span>
-      </button></a>
+        </button>
+      </a>
     </div>
   </section>
 
@@ -126,7 +129,7 @@
         </p>
       </div>
 
-      <app-carousel [autor]="'Koyoharu Gotouge'"></app-carousel>
+      <app-carousel [autor]="'Koyoharu Gotouge'" [id]="'3'"></app-carousel>
       <!-- <div class="grid gap-12 items-start md:grid-cols-4">
         <div class="relative card swiper-slide text-center" *ngFor="let l of librosManga">
           <div class="relative book hover:brightness-110">
@@ -158,12 +161,14 @@
     </article>
 
     <div class="flex justify-center gap-4 mt-10">
-      <button
-          class="font-medium text-[16px] flex items-center px-5 py-3 md:py-4 md:px-8 rounded-xl bg-gradient-to-r from-orange-300 to-orange-500 hover:from-pink-500 hover:to-yellow-500  relative gap-2 transition duration-300 hover:scale-105 text-white shadow-glass ">
+      <a href="/genero/2">
+        <button
+          class="font-medium text-[16px] flex items-center px-5 py-3 md:py-4 md:px-8 rounded-xl bg-gradient-to-r from-orange-300 to-orange-500 hover:from-orange-500 hover:to-yellow-500  relative gap-2 transition duration-300 hover:scale-105 text-white shadow-glass ">
           Descubrir más
           <span
               class="animate-ping absolute right-0 top-0 w-3 h-3  rounded-full bg-gradient-to-r from-orange -400 to-orange-700 "></span>
-      </button>
+        </button>
+      </a>
     </div>
   </section>
 </main>

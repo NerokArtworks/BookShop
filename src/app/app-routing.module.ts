@@ -8,8 +8,10 @@ import { IndexComponent } from './views/index/index.component';
 import { LoginComponent } from './views/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoutComponent } from './views/logout/logout.component';
+import { RegisterComponent } from './views/register/register.component';
 
 const routes: Routes = [
+  {path: 'register', component:RegisterComponent, data: { animation: 'fader' }},
   {path: 'login', component:LoginComponent, data: { animation: 'fader' }},
   {path:'logout', canActivate:[AuthGuard], component:LogoutComponent},
   {path: 'cesta', canActivate:[AuthGuard], component:CartComponent, data: { animation: 'fader' }},

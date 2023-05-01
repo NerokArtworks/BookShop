@@ -14,6 +14,7 @@ import Swiper from 'swiper';
 export class CarouselComponent {
   @ViewChild('slider', {static: false}) slider!: ElementRef;
   @Input() autor!: string;
+  @Input() id!: string;
 
   swiper!: Swiper;
 
@@ -56,7 +57,7 @@ export class CarouselComponent {
   initCarousel() {
     console.log("Init carousel", this.slider);
     if (this.slider && this.slider.nativeElement && this.slider.nativeElement.children.length > 0) {
-      this.swiper = new Swiper(".slide-content", {
+      this.swiper = new Swiper(`.slide-content${this.id}`, {
         slidesPerView: 3,
         spaceBetween: 50,
         speed: 400,

@@ -14,7 +14,7 @@ export interface LoginResponse {
 
 export class AuthService {
 
-  private readonly apiUrl="http://localhost:8080/usuario/login";
+  private readonly apiUrl="http://localhost:8080/usuarios/";
   private readonly tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {
@@ -22,12 +22,16 @@ export class AuthService {
   }
 
   login(username: string, pass:string) {
-    return this.http.post<LoginResponse>(`${this.apiUrl}`, {username, pass})
+    return this.http.post<LoginResponse>(`${this.apiUrl}login`, {username, pass})
     .pipe(
       tap((response) => {
         localStorage.setItem(this.tokenKey, response.jwt);
       })
     );;
+  }
+
+  register(user: Usuario) {
+    return this.http.post<LoginResponse>(`${this.apiUrl}register`, {user})
   }
 
   logout() {

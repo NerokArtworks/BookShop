@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { buttonAnimation } from 'src/app/Animations/cesta-button-animation';
 import { Libro } from 'src/app/interfaces/Libro';
 import { RestService } from 'src/app/services/api/rest.service';
 import { CestaService } from 'src/app/services/cesta-service.service';
@@ -11,6 +12,11 @@ import { CestaService } from 'src/app/services/cesta-service.service';
 export class CestaButtonComponent implements OnInit{
   @Input() id!: string | null | number | undefined;
   libro!: Libro;
+  @ViewChild('addToCartButton') addToCartButton!: ElementRef;
+  @ViewChild('addToCartIcon') addToCartIcon!: ElementRef;
+  @ViewChild('addToCartText') addToCartText!: ElementRef;
+  @ViewChild('addToCartPlus') addToCartPlus!: ElementRef;
+  @ViewChild('addToCartCon') addToCartCon!: ElementRef;
 
   constructor (private LibroService: RestService, private CestaService: CestaService) { }
 
@@ -49,12 +55,33 @@ export class CestaButtonComponent implements OnInit{
     // Borro la descripcion y la sinopsis para liberar espacio de la cookie
     // this.libro.descripcion = "";
     // this.libro.sinopsis = "";
-    carrito.push(this.libro);
-    // Guardar la cookie actualizada
-    this.setCookie("carrito", JSON.stringify(carrito), 7);
+    if (carrito.push(this.libro)) {
+      this.addToCartIcon.nativeElement.classList.add('cart-active');
+      this.addToCartPlus.nativeElement.classList.add('cart-plus-active');
+      this.addToCartCon.nativeElement.classList.add('cart-con-active');
+      this.addToCartText.nativeElement.classList.add('cart-text-active');
+      this.addToCartText.nativeElement.style.paddingLeft = '10px';
+      this.addToCartText.nativeElement.innerHTML = 'Añadido';
+      setTimeout(() => {
+        this.addToCartIcon.nativeElement.classList.remove('cart-active');
+        this.addToCartPlus.nativeElement.classList.remove('cart-plus-active');
+        this.addToCartCon.nativeElement.classList.remove('cart-con-active');
+        this.addToCartText.nativeElement.classList.remove('cart-text-active');
+        this.addToCartText.nativeElement.style.opacity = 0;
+        this.addToCartIcon.nativeElement.style.opacity = 0;
+        this.addToCartText.nativeElement.style.paddingLeft = 0;
+        this.addToCartText.nativeElement.innerHTML = 'Añadir';
+        setTimeout(() => {
+          this.addToCartText.nativeElement.style.opacity = 1;
+          this.addToCartIcon.nativeElement.style.opacity = 1;
+        }, 200);
+      }, 600);
+      // Guardar la cookie actualizada
+      this.setCookie("carrito", JSON.stringify(carrito), 7);
 
-    // CESTASERVICE
-    this.CestaService.addItem(this.libro);
+      // CESTASERVICE
+      this.CestaService.addItem(this.libro);
+    }
   }
 
   // Función para obtener el valor de una cookie por su nombre

@@ -22,6 +22,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { FeedComponent } from './views/books/feed/feed.component';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/logout/logout.component';
+import { RegisterComponent } from './views/register/register.component';
 
 // const appRoutes:Routes = [
 //   {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
@@ -50,7 +51,8 @@ import { LogoutComponent } from './views/logout/logout.component';
     CarouselComponent,
     FeedComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

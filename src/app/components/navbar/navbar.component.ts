@@ -12,18 +12,27 @@ import { fader } from 'src/app/route-animations';
 })
 export class NavbarComponent implements OnInit {
   protected userlogin: boolean = false;
+  protected index: boolean = false;
   private router: Router;
 
   constructor(protected routerp:Router) {
-    this.router=routerp;
+    this.router = routerp;
   }
 
   // Comprobar si el usuario está logueado
   ngOnInit(): void {
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.userlogin = true;
-      console.log("Usuario logueado");
-    } 
+    setTimeout(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.userlogin = true;
+        console.log("Usuario logueado");
+      } else {
+        this.userlogin = false;
+      }
+
+      if (this.router.url.endsWith('/index') && !this.userlogin) {
+        this.index = true;
+      }
+    })
   }
 }
