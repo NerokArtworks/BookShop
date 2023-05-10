@@ -56,6 +56,10 @@ export class CestaButtonComponent implements OnInit{
     // this.libro.descripcion = "";
     // this.libro.sinopsis = "";
     if (carrito.push(this.libro)) {
+      let cestaIcon = document.querySelector('.cesta-icon');
+      if (cestaIcon) {
+        cestaIcon.classList.add('active');
+      }
       this.addToCartIcon.nativeElement.classList.add('cart-active');
       this.addToCartPlus.nativeElement.classList.add('cart-plus-active');
       this.addToCartCon.nativeElement.classList.add('cart-con-active');
@@ -67,6 +71,9 @@ export class CestaButtonComponent implements OnInit{
         this.addToCartPlus.nativeElement.classList.remove('cart-plus-active');
         this.addToCartCon.nativeElement.classList.remove('cart-con-active');
         this.addToCartText.nativeElement.classList.remove('cart-text-active');
+        if (cestaIcon) {
+          cestaIcon.classList.remove('active');
+        }
         this.addToCartText.nativeElement.style.opacity = 0;
         this.addToCartIcon.nativeElement.style.opacity = 0;
         this.addToCartText.nativeElement.style.paddingLeft = 0;

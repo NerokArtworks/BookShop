@@ -34,8 +34,32 @@ export class CestaService {
       this.items.push(item);
       localStorage.setItem('itemsCesta', JSON.stringify(this.items));
 
-      console.log(`Nuevo item en la cesta: ${item.titulo}`);
+      console.log("Nuevo item en la cesta: ", item);
       console.log(`CestaService length: ${this.items.length}`);
+    }
+  }
+
+  increaseItem(item: Libro): void {
+    // Controlar que si ya existe ese libro en el carrito se incremente su cantidad
+    const libroExistente = this.items.find(i => i.id === item.id);
+    if (libroExistente) {
+      console.log(`Libro ya existe en cesta: ${libroExistente}, cantidad: ${libroExistente.cantidad}`);
+      libroExistente.cantidad++;
+      console.log(`Nueva cantidad: ${libroExistente.cantidad}`);
+      // Guardo el array de items con el valor actualizado en localStorage
+      localStorage.setItem('itemsCesta', JSON.stringify(this.items));
+    }
+  }
+
+  decreaseItem(item: Libro): void {
+    // Controlar que si ya existe ese libro en el carrito se incremente su cantidad
+    const libroExistente = this.items.find(i => i.id === item.id);
+    if (libroExistente) {
+      console.log(`Libro ya existe en cesta: ${libroExistente}, cantidad: ${libroExistente.cantidad}`);
+      libroExistente.cantidad--;
+      console.log(`Nueva cantidad: ${libroExistente.cantidad}`);
+      // Guardo el array de items con el valor actualizado en localStorage
+      localStorage.setItem('itemsCesta', JSON.stringify(this.items));
     }
   }
 

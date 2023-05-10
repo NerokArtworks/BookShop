@@ -21,8 +21,8 @@ export class AuthService {
 
   }
 
-  login(username: string, pass:string) {
-    return this.http.post<LoginResponse>(`${this.apiUrl}login`, {username, pass})
+  login(email: string, password:string) {
+    return this.http.post<LoginResponse>(`${this.apiUrl}login`, {email, password})
     .pipe(
       tap((response) => {
         localStorage.setItem(this.tokenKey, response.jwt);

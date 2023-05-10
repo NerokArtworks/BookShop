@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
         this.userlogin = false;
       }
 
-      if (this.router.url.endsWith('/index') && !this.userlogin) {
+      if (!this.router.url.endsWith('/login') && !this.userlogin) {
         this.index = true;
       }
     })

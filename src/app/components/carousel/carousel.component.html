@@ -13,8 +13,8 @@
             </a>
             <div
               class="price drop-shadow-md rounded-md p-2 hidden md:flex flex-col gap-1 transition absolute w-full h-auto opacity-0 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
-              <span *ngIf="l.tipo == 'tapadura'">Tapa dura</span>
-              <span *ngIf="l.tipo == 'tapablanda'">Tapa blanda</span>
+              <span *ngIf="l.tipo.includes('tapadura')">Tapa dura</span>
+              <span *ngIf="l.tipo.includes('tapablanda') && !l.tipo.includes('tapadura')">Tapa blanda</span>
               <div class="grid place-items-center grid-cols-2 mx-2 border-t border-gray-400">
                 <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
                   {{l.precio}} €</span>

@@ -1,6 +1,6 @@
 <section class="w-full breadcumb relative px-6 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0]">
-  <div class="container max-w-screen-lg xl:max-w-screen-xl h-full flex items-center mx-auto font-bold">
-      <span *ngIf="libro.titulo" class="font-light"><a href="/home" class="hover:underline hover:text-orange-500 px-1">Inicio</a>/</span>{{libro.titulo}}
+  <div *ngIf="libro" class="container max-w-screen-lg xl:max-w-screen-xl h-full flex items-center mx-auto font-bold">
+      <span class="font-light"><a href="/home" class="hover:underline hover:text-orange-500 px-1">Inicio / </a></span>{{libro.titulo}}
   </div>
 </section>
 <main class="main-wrapper relative flex items-center" *ngIf="libro != undefined">
@@ -35,7 +35,7 @@
               </svg>
               <span class="text-gray-600 ml-3">4 Valoraciones</span>
             </span>
-            <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
+            <!-- <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
               <a class="text-gray-500">
                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -51,9 +51,12 @@
                   <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
                 </svg>
               </a>
-            </span>
+            </span> -->
           </div>
           <p class="leading-relaxed font-bold">{{libro.descripcion}}</p>
+          <div class="mt-4 sinopsis-con w-full max-h-44 border rounded-bl-2xl rounded-tl-2xl pl-5 py-4 pr-2 border-gray-400 overflow-y-scroll">
+            <p class="">{{libro.sinopsis}}</p>
+          </div>
           <!-- Divisor -->
           <!-- <div class="container w-full h-10 flex items-center mx-auto px-2">
             <hr class="dashed w-full opacity-20">
@@ -63,10 +66,10 @@
             <div class="flex justify-between w-full">
               <div class="relative flex items-center">
                 <span class="mr-3">Tipo</span>
-                <select class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-orange-500 text-base pl-3 pr-10">
-                  <option [ngValue]="'Tapa dura'" [selected]="libro.tipo === 'tapadura'">Tapa dura</option>
-                  <option [ngValue]="'Tapa blanda'" [selected]="libro.tipo === 'tapablanda'">Tapa blanda</option>
-                  <option [ngValue]="'Formato digital'" [selected]="libro.tipo === 'formatodigital'">Formato digital</option>
+                <select (change)="alterTapa()" [(ngModel)]="selectedType" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-orange-500 text-base pl-3 pr-10">
+                  <option *ngIf="libro.tipo.includes('tapadura')" [ngValue]="'tapadura'" [selected]="libro.tipo === 'tapadura'">Tapa dura</option>
+                  <option *ngIf="libro.tipo.includes('tapablanda')" [ngValue]="'tapablanda'" [selected]="libro.tipo === 'tapablanda'">Tapa blanda</option>
+                  <option *ngIf="libro.tipo.includes('ebook')" [ngValue]="'ebook'" [selected]="libro.tipo === 'formatodigital'">Formato digital</option>
                 </select>
                 <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
@@ -87,7 +90,22 @@
           </div>
           <div class="flex pt-2">
             <span class="ml-auto w-full">
-              <app-cesta-button [id]="libro.id"></app-cesta-button>
+              <!-- <app-cesta-button [id]="libro.id"></app-cesta-button> -->
+              <button (click)="addToCart()" #addToCartButton
+                class="font-medium text-[14px] w-full flex items-center px-5 py-3 md:py-2 md:px-4 rounded-xl bg-gradient-to-r from-orange-300 to-orange-500 hover:from-orange-500 hover:to-yellow-500 relative gap-2 transition duration-200 active:scale-105 text-white shadow-glass">
+                <div class="w-full flex justify-center items-center gap-2" #addToCartCon>
+                  <span class="pb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" #addToCartIcon width="20" height="20" fill="currentColor" class="bi bi-bag-plus transition-all" viewBox="0 0 16 16">
+                      <path #addToCartPlus class="origin-top" fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"/>
+                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                    </svg>
+                  </span>
+                  <span class="text-center text-lg transition-all" #addToCartText> Añadir </span>
+                </div>
+                <span
+                  class="animate-ping absolute right-0 top-0 w-3 h-3 rounded-full bg-gradient-to-r from-orange -400 to-orange-700"
+                ></span>
+              </button>
             </span>
             <!-- <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
               <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">

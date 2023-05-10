@@ -20,7 +20,14 @@
                     <p class="mt-3 text-gray-500">Inicia sesión para acceder a tu cuenta</p>
                 </div>
 
-                <div class="mt-8">
+                <div class="mt-3 form-feedback-container">
+                    <!-- Div para mostrar mensaje de feedback -->
+                    <div #warn class="form-feedback text-center text-sm text-gray-900">
+                        Fallo en la autenticación, revise sus datos.
+                    </div>
+                </div>
+
+                <div class="">
                     <form #formulario="ngForm" (ngSubmit)="login(formulario)">
                         <div>
                             <label for="email" class="block mb-2 text-sm text-gray-600">Correo electrónico</label>

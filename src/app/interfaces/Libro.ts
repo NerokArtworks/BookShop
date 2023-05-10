@@ -18,4 +18,5 @@ export interface Libro {
     stock: string;
     oferta?: string;
     cantidad: number;
+    tapa?: string;
 }

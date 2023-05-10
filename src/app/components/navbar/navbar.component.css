@@ -21,10 +21,55 @@ nav {
   transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.cesta-icon.active {
+  /* transform: rotate(2deg) scale(2); */
+  animation: cesta-icon .5s ease forwards;
+  fill: orange;
+}
+
+@keyframes cesta-icon {
+  0% {
+    transform: rotate(0deg) scale(1);
+    fill: initial;
+  }
+  12.5% {
+    transform: rotate(5deg) scale(2);
+    fill: orange;
+  }
+  25% {
+    transform: rotate(-5deg) scale(2);
+    fill: orange;
+  }
+  50% {
+    transform: rotate(5deg) scale(2);
+    fill: orange;
+  }
+  62.5% {
+    transform: rotate(-5deg) scale(2);
+    fill: orange;
+  }
+  75% {
+    transform: rotate(5deg) scale(2);
+    fill: orange;
+  }
+  87.5% {
+    transform: rotate(-5deg) scale(2);
+    fill: orange;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    fill: initial;
+  }
+}
+
 @media only screen and (max-width: 750px) {
   .icon-con:active .icon {
     fill: orange;
     transform: scale(1.5);
     transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .icon-con:hover .icon {
+    fill: orange;
+    transform: none;
   }
 }

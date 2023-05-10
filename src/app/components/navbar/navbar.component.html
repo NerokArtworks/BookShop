@@ -47,10 +47,6 @@
                             Sellers</a>
                     </li>
                     <li>
-                        <a href="/autores" routerLinkActive="router-link-active"
-                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0">Autores</a>
-                    </li>
-                    <li>
                         <a href="#"
                             class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0">Contacto</a>
                     </li>
@@ -61,7 +57,7 @@
                         <a href="/cesta" routerLinkActive="router-link-active"
                             class="block py-2 pl-3 pr-4 text-gray-700 rounded md:hover:bg-transparent md:hover:text-orange-400 md:p-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
-                                class="bi bi-bag icon" viewBox="0 0 16 16">
+                                class="bi bi-bag icon cesta-icon" viewBox="0 0 16 16">
                                 <path
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                             </svg>
@@ -96,12 +92,12 @@
         <!-- Show when user logout -->
         <ng-container *ngIf="!userlogin && index">
             <div
-                class="items-center mt-4 md:mt-0 justify-end hidden bg-gray-50 md:bg-transparent w-full md:flex md:w-auto md:order-1">
+                class="items-center md:mt-0 justify-end bg-transparent flex w-auto order-1">
                 <ul
-                    class="flex flex-col md:items-center py-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
+                    class="flex md:items-center md:py-4 rounded-lg md:flex-row md:space-x-6 md:mt-0 md:text-sm md:font-medium">
                     <li>
                         <a href="/login" routerLinkActive="router-link-active"
-                            class="flex items-center justify-center gap-2 py-2 pl-3 pr-4 text-gray-700 hover:underline transition-all hover:gap-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0 uppercase">
+                            class="flex items-center justify-center gap-2 md:py-2 pl-3 pr-4 text-gray-700 hover:underline transition-all hover:gap-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0 uppercase">
                             Iniciar Sesión
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
                                 class="mb-1 bi bi-person-exclamation" viewBox="0 0 16 16">
@@ -112,8 +108,15 @@
                             </svg>
                         </a>
                     </li>
-                    <li>
-
+                    <li class="hidden md:block cursor-pointer icon-con">
+                        <a href="/cesta" routerLinkActive="router-link-active"
+                            class="block mb-1 text-gray-700 rounded md:hover:bg-transparent md:hover:text-orange-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                                class="bi bi-bag icon cesta-icon" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                            </svg>
+                        </a>
                     </li>
                 </ul>
             </div>

@@ -1,5 +1,5 @@
 import { NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,8 +13,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   private router: Router;
   private auth: AuthService;
+  @ViewChild("warn") warn!: ElementRef;
 
-  constructor(protected routerp:Router, authp:AuthService) {
+  constructor(protected routerp:Router, authp:AuthService, private renderer: Renderer2) {
     this.router=routerp;
     this.auth=authp;
    }
@@ -25,8 +26,14 @@ export class LoginComponent implements OnInit {
     this.auth.login(email,password).pipe(first()).subscribe((respuesta: any) =>{
       console.log(respuesta);
       if (respuesta){
-        localStorage.setItem('token',respuesta);
-        this.router.navigate(['/index']);
+        if (respuesta.result != 'fail') {
+          localStorage.setItem('token',respuesta);
+          window.location.reload();
+          this.router.navigate(['/index']);
+        } else {
+          this.renderer.addClass(this.warn.nativeElement, 'active');
+          console.log("Fallo en la autentificación");
+        }
       }
 
     })
