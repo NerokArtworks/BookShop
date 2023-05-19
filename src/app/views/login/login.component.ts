@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       console.log(respuesta);
       if (respuesta){
         if (respuesta.result != 'fail') {
-          localStorage.setItem('token',respuesta);
+          localStorage.setItem('token',respuesta.jwt);
           window.location.reload();
           this.router.navigate(['/index']);
         } else {

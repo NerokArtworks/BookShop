@@ -74,6 +74,7 @@ export class ShowBookComponent implements OnInit{
   addToCart() {
     this.animarBoton();
     // CESTASERVICE
+    console.log("Añadiendo con tapa: ", this.libro.tapa);
     this.CestaService.addItem(this.libro);
   }
 

@@ -9,8 +9,10 @@ import { LoginComponent } from './views/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoutComponent } from './views/logout/logout.component';
 import { RegisterComponent } from './views/register/register.component';
+import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 
 const routes: Routes = [
+  {path: 'admin', component:DashboardComponent, data: { animation: 'fader' }},
   {path: 'register', component:RegisterComponent, data: { animation: 'fader' }},
   {path: 'login', component:LoginComponent, data: { animation: 'fader' }},
   {path:'logout', canActivate:[AuthGuard], component:LogoutComponent},

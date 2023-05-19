@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 
 export interface LoginResponse {
   jwt: string;
+  user_id: string;
 }
 
 @Injectable({
@@ -14,7 +15,8 @@ export interface LoginResponse {
 
 export class AuthService {
 
-  private readonly apiUrl="http://localhost:8080/usuarios/";
+  // private readonly apiUrl="http://localhost:8080/usuarios/";
+  private readonly apiUrl = 'https://whatthebook.up.railway.app/usuarios/';
   private readonly tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {
@@ -26,6 +28,7 @@ export class AuthService {
     .pipe(
       tap((response) => {
         localStorage.setItem(this.tokenKey, response.jwt);
+        localStorage.setItem('userlogin', response.user_id);
       })
     );;
   }

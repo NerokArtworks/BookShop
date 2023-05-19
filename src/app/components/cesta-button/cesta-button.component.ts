@@ -87,6 +87,7 @@ export class CestaButtonComponent implements OnInit{
       this.setCookie("carrito", JSON.stringify(carrito), 7);
 
       // CESTASERVICE
+      this.libro.tapa = "tapadura";
       this.CestaService.addItem(this.libro);
     }
   }

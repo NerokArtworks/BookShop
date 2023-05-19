@@ -1,0 +1,125 @@
+<div class="h-full ml-14 mt-14 dash-container border-b border-gray-300 rounded-bl-md pb-10 md:ml-64 bg-gradient-to-b from-[#FFFFFF] to-[#F9E6E0]">
+    <div class="grid grid-cols-1 lg:grid-cols-1 p-4 gap-4">
+
+        <!-- Social Traffic -->
+        <div
+            class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 w-full shadow-lg rounded">
+            <div class="rounded-t mb-0 px-0 border-0">
+                <div class="flex flex-wrap items-center px-4 py-4">
+                    <div class="relative w-full max-w-full flex-grow flex-1">
+                        <h3 class="font-semibold text-base text-gray-900">Pedido</h3>
+                    </div>
+                    <div class="flex gap-8 items-center">
+                        <span class="font-regular text-md text-gray-600 text-right px-8 border-x border-dashed border-gray-200 uppercase"> 
+                            <p>ID</p>
+                            <p class="text-orange-400">{{pedido.id}}</p>
+                        </span>
+                        <span class="font-regular text-md text-gray-600 text-right pr-8 border-r border-dashed border-gray-200 uppercase"> 
+                            <p>Importe Total</p>
+                            <p class="text-orange-400">{{pedido.importe}} €</p>
+                        </span>
+                        <span class="font-regular text-md text-gray-600 text-right pr-8 border-r border-dashed border-gray-200 uppercase">
+                            <p>Fecha</p> 
+                            <p class="text-orange-400">{{pedido.fecha}}</p>
+                        </span>
+                    </div>
+                    <div class="relative w-full max-w-full flex-grow flex-1 text-right">
+                        <button
+                            class="bg-white text-gray-900 active:bg-white-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button">See all</button>
+                    </div>
+                </div>
+                <div class="block w-full overflow-x-auto">
+                    <table class="items-center w-full bg-transparent border-collapse">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    ID Detalle
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Cantidad
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Importe
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Título
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                    Autor
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                    Saga
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                    Tapa
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                    Portada
+                                </th>
+                                <th
+                                    class="px-4 select-none hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-gray-700 border-t border-gray-200 border-dashed" *ngFor="let detalles of pedido.detallesPedidos | slice:0:10">
+                                <th
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                    {{detalles.id}}</th>
+                                <th
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                    {{detalles.cantidad}}</th>
+                                <td
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{detalles.importe}} €</td>
+                                <td
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{detalles.libro.titulo}}</td>
+                                <td
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{detalles.libro.autor}}</td>
+                                <td
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{detalles.libro.saga}}</td>
+                                <td
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{detalles.tapa}}</td>
+                                <td
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <img class="w-24 h-full rounded-sm" src="../../../../assets/img/{{detalles.libro.portada}}" alt="Portada {{detalles.libro.titulo}}">
+                                </td>
+                                <td
+                                    class="border-t-0 px-4 align-middle text-center border-l-0 border-r-0 text-xs p-4">
+                                    <span class="flex justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square cursor-pointer hover:text-orange-400 transition-all duration-100 hover:scale-110" viewBox="0 0 16 16">
+                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="text-sm text-gray-400">-</span>
+                                    <span class="flex justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash cursor-pointer hover:text-orange-400 transition-all duration-100 hover:scale-110" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                          </svg>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- ./Social Traffic -->
+    </div>
+</div>

@@ -15,6 +15,7 @@ export class RegisterComponent {
   private router: Router;
   private auth: AuthService;
   protected showWarn: boolean = false;
+  protected passwordInvalid: boolean = false;
   private newUser!: Usuario;
 
   constructor(protected routerp:Router, authp:AuthService, private LibrosService: RestService) {
@@ -24,34 +25,39 @@ export class RegisterComponent {
 
   register (form:NgForm){
     if (form.valid) {
-      const email = form.value.email;
-      const password = form.value.password;
-      const username = form.value.username;
-      const dni = form.value.dni;
-      const nombre = form.value.nombre;
-      const apellidos = form.value.apellidos;
+      if (form.value.password === form.value.password2) {
+        const email = form.value.email;
+        const password = form.value.password;
+        const username = form.value.username;
+        const dni = form.value.dni;
+        const nombre = form.value.nombre;
+        const apellidos = form.value.apellidos;
 
-      const newUser: Usuario = {
-        id: null,
-        username: username,
-        password: password,
-        dni: dni,
-        nombre: nombre,
-        apellidos: apellidos,
-        fecha_nac: new Date(),
-        pais: null,
-        email: email,
-        telefono: null,
-        socio: 0,
-        rol: null
-      };
+        const newUser: Usuario = {
+          id: null,
+          username: username,
+          password: password,
+          dni: dni,
+          nombre: nombre,
+          apellidos: apellidos,
+          fecha_nac: new Date(),
+          fecha_creacion: new Date(),
+          pais: null,
+          email: email,
+          telefono: null,
+          socio: 0,
+          rol: null
+        };
 
-      console.log(newUser);
-      this.newUser = newUser;
-      this.LibrosService.registerUser(newUser).subscribe((user=>{
-        // Login after succesfull register
-        this.login();
-      }));
+        console.log(newUser);
+        this.newUser = newUser;
+        this.LibrosService.registerUser(newUser).subscribe((user=>{
+          // Login after succesfull register
+          this.login();
+        }));
+      } else {
+        this.passwordInvalid = true;
+      }
     } else {
       this.showWarn = true;
     }
@@ -62,6 +68,7 @@ export class RegisterComponent {
       console.log(respuesta);
       if (respuesta){
         localStorage.setItem('token',respuesta);
+        window.location.reload();
         this.router.navigate(['/index']);
       }
 

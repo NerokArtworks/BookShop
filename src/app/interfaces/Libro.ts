@@ -3,7 +3,7 @@ export interface Libro {
     titulo: string;
     saga: string;
     autor: string;
-    isbn: string;
+    ISBN: string;
     fecha_publi: Date;
     id_genero: number;
     genero: string;

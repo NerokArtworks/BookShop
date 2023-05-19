@@ -1,0 +1,24 @@
+.dash-container {
+    min-height: 90vh;
+}
+
+.sortable {
+    position: relative;
+}
+
+.sort-icon {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+}
+
+.sort-icon i {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sort-icon i.bi-arrow-up.asc,
+.sort-icon i.bi-arrow-down.desc {
+    opacity: 1;
+}

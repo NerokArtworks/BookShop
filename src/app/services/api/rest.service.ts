@@ -5,6 +5,7 @@ import { Libro } from 'src/app/interfaces/Libro';
 import { Pedido } from 'src/app/interfaces/Pedido';
 import { Genero } from 'src/app/interfaces/Genero';
 import { Usuario } from 'src/app/interfaces/Usuario';
+import { DetallesPedido } from 'src/app/interfaces/DetallesPedido';
 
 // Cabeceras indicando el tipo de información a enviar
 const httpOptions={
@@ -16,10 +17,10 @@ const httpOptions={
 })
 export class RestService {
   // URL de la API a consumir (archivo json)
-  private apiUrl = 'http://localhost:8080';
+  // private apiUrl = 'http://localhost:8080';
 
   // Railway hosting
-  // private apiUrl = 'https://whatthebook.up.railway.app';
+  private apiUrl = 'https://whatthebook.up.railway.app';
 
   // Variable HTTP para poder realizar peticiones asíncronas a la API
   constructor(private http: HttpClient) { }
@@ -37,7 +38,12 @@ export class RestService {
 
   // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
   public getPedidos(): Observable<Pedido[]> {
-    return this.http.get<Pedido[]>(this.apiUrl + '/pedido/obtener');
+    return this.http.get<Pedido[]>(this.apiUrl + '/pedidos/obtener');
+  }
+
+  // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
+  public getUsers(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.apiUrl + '/usuarios/obtener');
   }
 
   // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
@@ -47,6 +53,20 @@ export class RestService {
     return this.http.post<Libro>(url, body);
   }
 
+  // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
+  public getUser(id: any): Observable<Usuario> {
+    const url = `${this.apiUrl}/usuarios/obtener1`;
+    const body = { id: id };
+    return this.http.post<Usuario>(url, body);
+  }
+
+  // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
+  public getUserByJWT(jwt: string): Observable<Usuario> {
+    const url = `${this.apiUrl}/usuarios/getUser`;
+    const body = { token: jwt };
+    return this.http.post<Usuario>(url, body);
+  }
+
   public getLibrosByGenero(genero: number) {
     const body = { genero: genero };
     return this.http.post<Libro[]>(this.apiUrl + '/libros/getByGenero', body);
@@ -54,6 +74,17 @@ export class RestService {
 
   public getGeneros() {
     return this.http.get<Genero[]>(this.apiUrl + '/generos/obtener');
+  }
+
+  public getEditoriales() {
+    return this.http.get<Genero[]>(this.apiUrl + '/editoriales/obtener');
+  }
+
+  // POST que devuelve un observable de array de objetos del tipo Proyecto de la interface
+  public getDetallesPedido(id: any): Observable<DetallesPedido[]> {
+    const url = `${this.apiUrl}/detallesPedido/getByOrder`;
+    const body = { id: id };
+    return this.http.post<DetallesPedido[]>(url, body);
   }
 
   public registerUser(user: Usuario) {
@@ -69,19 +100,30 @@ export class RestService {
   }
 
   public updateLibro(libro: Libro): Observable<Libro> {
-    const url = `${this.apiUrl}/libros/modificar1`;
+    const url = `${this.apiUrl}/libros/modificar`;
     return this.http.put<Libro>(url, libro, httpOptions);
   }
 
-  public deleteLibro(id: string | null): Observable<Libro> {
+  public deleteLibro(id: string | null | number | undefined): Observable<Libro> {
     const url = `${this.apiUrl}/libros/borrar`;
     const body = { id: id };
     return this.http.post<Libro>(url, body);
   }
 
+  public deletePedido(id: string | null | number | undefined): Observable<Pedido> {
+    const url = `${this.apiUrl}/pedidos/borrar`;
+    const body = { id: id };
+    return this.http.post<Pedido>(url, body);
+  }
+
   public createLibro(libro: Libro): Observable<Libro> {
     const url = `${this.apiUrl}/libros/nuevo`;
     return this.http.post<Libro>(url, libro, httpOptions);
+  }
+
+  public createOrder(pedido: Pedido): Observable<any> {
+    const url = `${this.apiUrl}/pedidos/nuevo`;
+    return this.http.post<Pedido>(url, pedido, httpOptions);
   }
 
 }

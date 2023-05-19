@@ -9,13 +9,20 @@
     <div class="container grid place-items-center max-w-screen-lg xl:max-w-screen-xl h-full mx-auto">
       <article class="w-full h-full mx-auto grid grid-cols-1 lg:grid-cols-2 place-items-center justify-between align-middle">
         <div class="pb-5 lg:pb-0 flex justify-center lg:block">
-          <img alt="ecommerce" class="lg:w-3/4 xl:w-3/5 w-full h-full object-contain transition-all duration-200 hover:brightness-110 hover:drop-shadow-lg rounded-lg"
+          <img alt="Portada de {{libro.titulo}}" class="lg:w-3/4 xl:w-3/5 w-full h-full object-contain transition-all duration-200 hover:brightness-110 hover:drop-shadow-lg rounded-lg"
           src="../../../assets/img/{{libro.portada}}">
         </div>
         <div class="lg:w-full w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 h-full flex flex-col justify-center">
           <h2 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.autor}}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 uppercase">{{libro.titulo}}</h1>
           <h3 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.saga}}</h3>
+          <span class="flex items-center gap-2">
+            <h4 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.editorial}}</h4>
+            <p> · </p>
+            <h4 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.genero}}</h4>
+            <p> · </p>
+            <h4 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.fecha_publi}}</h4>
+          </span>
           <div class="flex mb-4">
             <span class="flex items-center">
               <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-orange-500" viewBox="0 0 24 24">

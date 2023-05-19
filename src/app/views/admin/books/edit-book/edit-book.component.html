@@ -1,0 +1,376 @@
+<div
+    class="h-full ml-14 mt-14 dash-container border-b border-gray-300 rounded-bl-md pb-4 md:ml-64 bg-gradient-to-b from-[#FFFFFF] to-[#F9E6E0]">
+
+    <!-- Statistics Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 p-4 gap-4">
+        <div
+            class="group bg-gradient-to-r from-orange-300 to-orange-500 hover:from-orange-500 hover:to-yellow-500 hover:shadow-xl cursor-pointer hover:translate-y-0.5 transition-all duration-300 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-[#F9E6E0] hover:shadow-xl text-white font-medium group">
+            <div
+                class="flex justify-center items-center w-14 h-14 border border-gray-200 rounded-full transition-all duration-300 transform group-hover:scale-105 group-hover:shadow-md">
+                <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="-2 -2 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                        d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z">
+                    </path>
+                </svg>
+            </div>
+            <div class="text-right flex items-center gap-2">
+                <p class="text-xl uppercase text-white">Crear nuevo libro</p>
+            </div>
+            <span
+                class="animate-ping absolute right-0 top-0 w-3 h-3 rounded-full bg-gradient-to-r from-orange -400 to-orange-700"></span>
+        </div>
+        <div
+            class="bg-white hover:shadow-xl hover:translate-y-0.5 transition-all duration-300 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-orange-400 text-gray-900 font-medium group">
+            <div
+                class="flex justify-center items-center w-14 h-14 border border-gray-200 rounded-full transition-all duration-300 transform group-hover:scale-105 group-hover:border-gray-500 group-hover:shadow-md">
+                <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="stroke-current text-orange-500 transform transition-transform duration-500 ease-in-out">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+            </div>
+            <div class="text-right">
+                <p>Ventas</p>
+            </div>
+        </div>
+    </div>
+    <!-- ./Statistics Cards -->
+
+    <div class="grid grid-cols-1 lg:grid-cols-1 p-4 gap-8">
+
+        <section
+            class="producto text-gray-700 body-font w-full h-full relative overflow-hidden px-6 py-10 pt-5 bg-gray-50 shadow-lg rounded">
+            <div class="w-full flex flex-wrap items-center px-4 py-2">
+                <div class="relative w-full max-w-full flex-grow flex-1">
+                    <h3 class="font-semibold text-base text-gray-900">Modificar datos del libro</h3>
+                </div>
+                <div class="relative w-full max-w-full flex-grow flex-1 text-right">
+                    <h3 class="font-semibold text-xl text-gray-900 uppercase">preview</h3>
+                </div>
+            </div>
+            <div class="container grid place-items-center h-full mx-auto">
+                <article
+                    class="w-full h-full mx-auto grid grid-cols-1 lg:grid-cols-2 place-items-center justify-between align-middle">
+                    <div class="pb-5 lg:pb-0 flex justify-center lg:block">
+                        <img alt="Portada de {{libro.titulo}}"
+                            class="lg:w-3/4 xl:w-3/5 w-full h-full object-contain transition-all duration-200 hover:brightness-110 hover:drop-shadow-lg rounded-lg"
+                            src="../../../assets/img/{{libro.portada}}">
+                    </div>
+                    <div class="lg:w-full w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 h-full flex flex-col justify-center">
+                        <h2 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.autor}}</h2>
+                        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 uppercase">{{libro.titulo}}</h1>
+                        <h3 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.saga}}</h3>
+                        <span class="flex items-center gap-2">
+                            <h4 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.editorial}}</h4>
+                            <p> · </p>
+                            <h4 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.genero}}</h4>
+                            <p> · </p>
+                            <h4 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{libro.fecha_publi}}</h4>
+                        </span>
+                        <div class="flex mb-4">
+                            <span class="flex items-center">
+                                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-orange-500"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                    </path>
+                                </svg>
+                                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-orange-500"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                    </path>
+                                </svg>
+                                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-orange-500"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                    </path>
+                                </svg>
+                                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-orange-500"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                    </path>
+                                </svg>
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" class="w-4 h-4 text-orange-500" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                    </path>
+                                </svg>
+                                <span class="text-gray-600 ml-3">4 Valoraciones</span>
+                            </span>
+                        </div>
+                        <p class="leading-relaxed font-bold">{{libro.descripcion}}</p>
+                        <div
+                            class="mt-4 sinopsis-con w-full max-h-44 border rounded-bl-2xl rounded-tl-2xl pl-5 py-4 pr-2 border-gray-400 overflow-y-scroll">
+                            <p class="">{{libro.sinopsis}}</p>
+                        </div>
+                        <div class="flex mt-6 items-center pb-2">
+                            <div class="flex justify-between w-full">
+                                <div class="relative flex items-center">
+                                    <span class="mr-3">Tipo</span>
+                                    <select
+                                        class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-orange-500 text-base pl-3 pr-10">
+                                        <option *ngIf="libro.tipo.includes('tapadura')" [ngValue]="'tapadura'"
+                                            [selected]="libro.tipo === 'tapadura'">Tapa dura</option>
+                                        <option *ngIf="libro.tipo.includes('tapablanda')" [ngValue]="'tapablanda'"
+                                            [selected]="libro.tipo === 'tapablanda'">Tapa blanda</option>
+                                        <option *ngIf="libro.tipo.includes('ebook')" [ngValue]="'ebook'"
+                                            [selected]="libro.tipo === 'formatodigital'">Formato digital</option>
+                                    </select>
+                                    <span
+                                        class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" class="w-4 h-4"
+                                            viewBox="0 0 24 24">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="flex gap-2 items-center grid-cols-2 mx-2">
+                                    <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
+                                        {{libro.precio}} €</span>
+                                    <span class="text-orange-500 text-2xl font-black">{{libro.oferta}} €</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- Social Traffic -->
+        <div class="relative flex flex-col min-w-0 lg:mb-0 break-words bg-gray-50 py-6 w-full shadow-lg rounded">
+            <div class="rounded-t mb-0 px-0 border-0">
+                <div class="flex flex-wrap items-center px-8 py-2">
+                    <div class="relative w-full max-w-full flex-grow flex-1">
+                        <h3 class="font-semibold text-xl text-gray-900 uppercase">Datos</h3>
+                    </div>
+                </div>
+                <div class="block w-full overflow-x-auto p-8">
+                    <form #formulario="ngForm" (ngSubmit)="edit(formulario)" *ngIf="libro">
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="titulo" class="text-sm text-gray-600">Título</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.titulo" required name="titulo" id="titulo"
+                                    placeholder="{{libro.titulo}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['titulo']"
+                                    [class.show-alert]="formulario.controls['titulo'].invalid && (formulario.controls['titulo'].dirty || formulario.controls['titulo'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="autor" class="text-sm text-gray-600">Autor</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.autor" required name="autor" id="autor"
+                                    placeholder="{{libro.autor}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['autor']"
+                                    [class.show-alert]="formulario.controls['autor'].invalid && (formulario.controls['autor'].dirty || formulario.controls['autor'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="saga" class="text-sm text-gray-600">Saga</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.saga" required name="saga" id="saga" type="text"
+                                    placeholder="{{libro.saga}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['saga']"
+                                    [class.show-alert]="formulario.controls['saga'].invalid && (formulario.controls['saga'].dirty || formulario.controls['saga'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="ISBN" class="text-sm text-gray-600">ISBN</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.ISBN" required name="ISBN" id="ISBN" type="text"
+                                    placeholder="ISBN"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['ISBN']"
+                                    [class.show-alert]="formulario.controls['ISBN'].invalid && (formulario.controls['ISBN'].dirty || formulario.controls['ISBN'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="descripcion" class="text-sm text-gray-600">Descripción</label>
+                                </div>
+                                <textarea autocomplete="off" [(ngModel)]="libro.descripcion" required name="descripcion" id="descripcion"
+                                    placeholder="Descripción"
+                                    class="block w-full px-4 h-44 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40">
+                                </textarea>
+                                <div *ngIf="formulario.controls['descripcion']"
+                                    [class.show-alert]="formulario.controls['descripcion'].invalid && (formulario.controls['descripcion'].dirty || formulario.controls['descripcion'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="sinopsis" class="text-sm text-gray-600">Sinopsis</label>
+                                </div>
+                                <textarea autocomplete="off" [(ngModel)]="libro.sinopsis" required name="sinopsis" id="sinopsis"
+                                    placeholder="Sinopsis"
+                                    class="block w-full px-4 h-44 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40">
+                                </textarea>
+                                <div *ngIf="formulario.controls['sinopsis']"
+                                    [class.show-alert]="formulario.controls['sinopsis'].invalid && (formulario.controls['sinopsis'].dirty || formulario.controls['sinopsis'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-3 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="dni" class="text-sm text-gray-600">Tipo</label>
+                                </div>
+                                <select multiple [(ngModel)]="tipos" required name="tipo" id="tipo" (change)="updateTipos()"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40">
+                                    <option value="tapadura" [selected]="libro.tipo.includes('tapadura')">Tapa dura</option>
+                                    <option value="tapablanda" [selected]="libro.tipo.includes('tapablanda')">Tapa blanda</option>
+                                    <option value="ebook" [selected]="libro.tipo.includes('ebook')">eBook</option>
+                                </select>
+                                <div *ngIf="formulario.controls['tipo']"
+                                    [class.show-alert]="formulario.controls['tipo'].invalid && (formulario.controls['tipo'].dirty || formulario.controls['tipo'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    Selecciona al menos un tipo</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="precio" class="text-sm text-gray-600">Precio (€)</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.precio" required type="text" name="precio" id="precio"
+                                    placeholder="{{libro.precio}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['precio']"
+                                    [class.show-alert]="formulario.controls['precio'].invalid && (formulario.controls['precio'].dirty || formulario.controls['precio'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="oferta" class="text-sm text-gray-600">Oferta (€)</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.oferta" required type="text" name="oferta" id="oferta"
+                                    placeholder="{{libro.oferta}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['oferta']"
+                                    [class.show-alert]="formulario.controls['oferta'].invalid && (formulario.controls['oferta'].dirty || formulario.controls['oferta'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-3 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="fecha_publi" class="text-sm text-gray-600">Fecha de publicación</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.fecha_publi" required name="fecha_publi" id="fecha_publi" type="date"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['fecha_publi']"
+                                    [class.show-alert]="formulario.controls['fecha_publi'].invalid && (formulario.controls['fecha_publi'].dirty || formulario.controls['fecha_publi'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="id_genero" class="text-sm text-gray-600">Género</label>
+                                </div>
+                                <select autocomplete="off" [(ngModel)]="libro.id_genero" required name="id_genero" id="id_genero" type="text" (change)="updateGenero()"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40">
+                                    <option value="{{g.id}}" [selected]="libro.id_genero === g.id" *ngFor="let g of generos">{{g.titulo}}</option>
+                                </select>
+                                <div *ngIf="formulario.controls['id_genero']"
+                                    [class.show-alert]="formulario.controls['id_genero'].invalid && (formulario.controls['id_genero'].dirty || formulario.controls['id_genero'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="id_editorial" class="text-sm text-gray-600">Editorial</label>
+                                </div>
+                                <select autocomplete="off" [(ngModel)]="libro.id_editorial" required name="id_editorial" id="id_editorial" type="text" (change)="updateEditorial()"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40">
+                                    <option value="{{e.id}}" [selected]="libro.id_editorial === e.id" *ngFor="let e of editoriales">{{e.titulo}}</option>
+                                </select>
+                                <div *ngIf="formulario.controls['id_editorial']"
+                                    [class.show-alert]="formulario.controls['id_editorial'].invalid && (formulario.controls['id_editorial'].dirty || formulario.controls['id_editorial'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-3 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="rating" class="text-sm text-gray-600">Rating</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.rating" required name="rating" id="rating" type="text"
+                                    placeholder="{{libro.rating}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['rating']"
+                                    [class.show-alert]="formulario.controls['rating'].invalid && (formulario.controls['rating'].dirty || formulario.controls['rating'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="stock" class="text-sm text-gray-600">Stock</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="libro.stock" required name="stock" id="stock" type="text"
+                                    placeholder="{{libro.stock}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['stock']"
+                                    [class.show-alert]="formulario.controls['stock'].invalid && (formulario.controls['stock'].dirty || formulario.controls['stock'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="portada" class="text-sm text-gray-600">Imagen de portada (subir previamente a la carpeta assets)</label>
+                                </div>
+                                <input autocomplete="off" name="portada" id="portada" type="file" (change)="updatePortada($event)"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['portada']"
+                                    [class.show-alert]="formulario.controls['portada'].invalid && (formulario.controls['portada'].dirty || formulario.controls['portada'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="mt-4">
+                            <button type="submit"
+                                class="w-full px-4 py-2 tracking-wide text-white transform bg-gradient-to-r from-orange-300 to-orange-500 hover:from-orange-500 hover:to-yellow-500 hover:shadow-xl cursor-pointer rounded-md transition-all duration-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-orange-300 focus:ring-opacity-50">
+                                Guardar cambios
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- ./Social Traffic -->
+    </div>
+</div>

@@ -6,6 +6,7 @@ export interface Usuario {
     nombre:string;
     apellidos:string;
     fecha_nac:Date;
+    fecha_creacion:Date;
     pais:string|null;
     email:string;
     telefono:string|null;

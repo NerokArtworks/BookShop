@@ -5,6 +5,8 @@
 
 html {
   font-family: 'OptimaTL_Regular';
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -58,6 +60,10 @@ h4, p, span {
   top: 10vh;
 }
 
+.nav-distance {
+  margin-top: 10vh;
+}
+
 main {
   padding-top: 10vh;
   width: 100% !important;
@@ -85,3 +91,95 @@ main {
     transform: translate(0, 0) !important;
   }
 }
+
+/* SNACKBAR */
+.mat-snack-bar-container {
+  background-color: orange;
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mat-snack-bar-content {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mat-snack-bar-action {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.mat-snack-bar-dismiss {
+  color: #cccccc;
+}
+
+/* Dialog */
+.cdk-overlay-container > text {
+  font-family: 'OptimaTL_Regular' !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__content, .mat-mdc-dialog-container .mdc-dialog__title {
+  font-family: 'OptimaTL_Regular' !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__title {
+  text-transform: uppercase;
+}
+
+.mdc-dialog__actions {
+  gap: 1rem;
+  padding: 8px 24px !important;
+}
+
+.mdc-dialog__actions button:nth-child(1) {
+  color: rgb(202, 131, 0);
+  background: white;
+}
+
+.mdc-dialog__actions button {
+  border-radius: 8px;
+  padding: 5px;
+  transition: .3s ease-in-out !important;
+}
+
+.mdc-dialog__actions button:nth-child(2) {
+  color: white;
+  background: rgb(202, 131, 0);
+}
+
+.mdc-dialog__actions button:hover {
+  background: #ececec;
+  color: black;
+  transition: .3s ease-in-out !important;
+}
+
+.mdc-dialog__actions button:focus-visible {
+  outline-color: #ffa43c;
+}
+
+.mat-dialog-container {
+  /* Estilos personalizados */
+  background-color: #fff;
+  border-radius: 8px;
+  /* Otros estilos */
+}
+.mat-dialog-content {
+  /* Estilos personalizados */
+  padding: 16px;
+  color: #333;
+  /* Otros estilos */
+}
+
+.mat-dialog-actions {
+  /* Estilos personalizados */
+  justify-content: flex-end;
+  /* Otros estilos */
+}
+
+.mat-dialog-actions button {
+  /* Estilos personalizados */
+  margin-left: 8px;
+  /* Otros estilos */
+}
+

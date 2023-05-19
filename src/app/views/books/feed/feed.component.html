@@ -16,7 +16,7 @@
       <!-- Item 1 -->
       <div class="relative space-y-4 text-center" *ngFor="let l of libros">
         <div class="relative book">
-          <a href="/ver/{{l.id}}">
+          <a [routerLink]="['/ver', l.id]" routerLinkActive="router-link-active" >
             <img class="w-64 h-64 md:w-10/12 md:h-full mx-auto transition duration-200 hover:brightness-110 hover:drop-shadow-lg object-contain md:object-cover cursor-pointer rounded-xl"
           src="../../../assets/img/{{l.portada}}" alt="Carátula {{l.titulo}}" loading="lazy" />
           </a>

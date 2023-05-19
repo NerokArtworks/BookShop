@@ -3,6 +3,12 @@ import { Libro } from 'src/app/interfaces/Libro';
 import { CestaService } from 'src/app/services/cesta-service.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { GASTOS_ENVIO, OFERTA, PRECIO_EBOOK, PTO_TAPABLANDA } from 'src/app/constants/app.constants';
+import { RestService } from 'src/app/services/api/rest.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Usuario } from 'src/app/interfaces/Usuario';
+import { Pedido } from 'src/app/interfaces/Pedido';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -17,12 +23,14 @@ import { GASTOS_ENVIO, OFERTA, PRECIO_EBOOK, PTO_TAPABLANDA } from 'src/app/cons
 })
 
 export class CartComponent implements OnInit{
-  protected itemsCesta: any[] = [];
+  protected itemsCesta: Libro[] = [];
   protected cartEmpty: boolean = false;
   protected total: number = 0;
   protected userlogin: boolean = false;
+  protected user!: Usuario;
+  protected pedidoKO: boolean = false;
 
-  constructor(private CestaService: CestaService) {}
+  constructor(private CestaService: CestaService, private RestService: RestService, private AuthService: AuthService, private router: Router, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     // Cargar los items de la cesta de compra
@@ -41,10 +49,12 @@ export class CartComponent implements OnInit{
     if (token) {
       this.userlogin = true;
       console.log("Usuario logueado");
+      var userlogin: number = Number(localStorage.getItem('userlogin'));
+      this.RestService.getUser(userlogin).subscribe(user => {(this.user = user);});
+
     } else {
       this.userlogin = false;
     }
-    
   }
 
   increment(item: Libro) {
@@ -83,12 +93,12 @@ export class CartComponent implements OnInit{
 
     // Recorrer los items de la cesta y sumar precios al total
     this.itemsCesta.forEach(libro => {
-      if (libro.tapa = 'tapadura') {
+      if (libro.tapa == 'tapadura') {
         // Precio normal
-      } else if (libro.tapa = 'tapablanda') {
+      } else if (libro.tapa == 'tapablanda') {
         // Para libros en tapablanda reducir un 48.56% el precio de tapadura
-        libro.precio = parseFloat(((libro.precio * PTO_TAPABLANDA) / 100).toFixed(2)); // Da problemas
-      } else if(libro.tapa = 'ebook') {
+        // libro.precio = parseFloat(((libro.precio * PTO_TAPABLANDA) / 100).toFixed(2)); // Da problemas
+      } else if(libro.tapa == 'ebook') {
         // Para libros en ebook asignar 9.99€
         libro.precio = PRECIO_EBOOK;
       }
@@ -98,5 +108,54 @@ export class CartComponent implements OnInit{
     // Gastos de envio
     that.total = parseFloat((that.total + GASTOS_ENVIO).toFixed(2));
     console.log(`Total compra: ${this.total} €`);
+  }
+
+  createOrder() {
+    let that = this;
+    var detallesPedido: any[] = [];
+    let importeTotal = 0;
+    this.itemsCesta.forEach(item => {
+      let importe = (item.precio * OFERTA * item.cantidad).toFixed(2);
+      importeTotal += Number(importe);
+      detallesPedido.push({
+        id: null,
+        cantidad: item.cantidad,
+        importe: importe,
+        libro: item
+      });
+    });
+    
+    const pedido: Pedido = {
+      id: null,
+      fecha: new Date(),
+      importe:Math.round((importeTotal + Number.EPSILON) * 100) / 100,
+      detallesPedidos: detallesPedido,
+      descuento: null,
+      usuario: this.user
+    }
+    console.log("Detalles del pedido: ", detallesPedido);
+    console.log("Pedido: ", pedido);
+
+    this.RestService.createOrder(pedido).subscribe(response => {
+      (console.log(response));
+      // if (response.result == "pedidoOK") {
+        // Vaciar cesta
+        this.itemsCesta = [];
+        this.CestaService.vaciarCesta();
+        this.router.navigate(["/index"]);
+        // ALERTA
+        this.showSuccessAlert();
+      // } else {
+      //   this.pedidoKO = true;
+      //   this.cartEmpty = true;
+      // }
+    });
+  }
+
+  showSuccessAlert() {
+    this.snackBar.open('Pedido completado. ¡Pronto tendrás tus libros contigo!', 'Cerrar', {
+      duration: 3000, // Duración en milisegundos
+      panelClass: 'success-snackbar' // Clase CSS personalizada para la apariencia de éxito
+    });
   }
 }

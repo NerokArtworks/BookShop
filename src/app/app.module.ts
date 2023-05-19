@@ -23,6 +23,18 @@ import { FeedComponent } from './views/books/feed/feed.component';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/logout/logout.component';
 import { RegisterComponent } from './views/register/register.component';
+import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
+import { MainComponent } from './views/admin/main/main.component';
+import { OrdersComponent } from './views/admin/orders/orders.component';
+import { UsersComponent } from './views/admin/users/users.component';
+import { BooksComponent } from './views/admin/books/books.component';
+import { EditBookComponent } from './views/admin/books/edit-book/edit-book.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateBookComponent } from './views/admin/books/create-book/create-book.component';
+import { ShowOrderComponent } from './views/admin/orders/show-order/show-order.component';
+
 
 // const appRoutes:Routes = [
 //   {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
@@ -53,6 +65,15 @@ import { RegisterComponent } from './views/register/register.component';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
+    DashboardComponent,
+    MainComponent,
+    OrdersComponent,
+    UsersComponent,
+    BooksComponent,
+    EditBookComponent,
+    ConfirmationDialogComponent,
+    CreateBookComponent,
+    ShowOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +84,12 @@ import { RegisterComponent } from './views/register/register.component';
     HttpClientModule,
     LoaderModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    ConfirmationDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

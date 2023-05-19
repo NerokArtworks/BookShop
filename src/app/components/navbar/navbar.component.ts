@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interfaces/Usuario';
 import { fader } from 'src/app/route-animations';
+import { RestService } from 'src/app/services/api/rest.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +15,10 @@ import { fader } from 'src/app/route-animations';
 export class NavbarComponent implements OnInit {
   protected userlogin: boolean = false;
   protected index: boolean = false;
+  protected user!: Usuario;
   private router: Router;
 
-  constructor(protected routerp:Router) {
+  constructor(protected routerp:Router, private RestService: RestService) {
     this.router = routerp;
   }
 
@@ -26,6 +29,9 @@ export class NavbarComponent implements OnInit {
       if (token) {
         this.userlogin = true;
         console.log("Usuario logueado");
+        this.RestService.getUserByJWT(token).subscribe(usuario => {
+          (this.user = usuario);
+        })
       } else {
         this.userlogin = false;
       }

@@ -1,11 +1,12 @@
+import { Descuento } from "./Descuento";
+import { Usuario } from "./Usuario";
+
 export interface Pedido {
     id?: string | null | number;
-    id_usuario: string | null;
-    id_libro: string | null;
-    username: string | null;
-    titulo: string | null;
-    autor: string | null;
-    editorial: string | null;
-    genero: string | null;
-    fecha: Date | null;
+    fecha: Date;
+    importe: number;
+    detallesPedidos: any[] | null;
+    descuento: Descuento | null;
+    usuario: Usuario;
+    tracking?: number;
 }

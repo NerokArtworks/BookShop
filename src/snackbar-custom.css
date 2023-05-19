@@ -1,0 +1,48 @@
+.success-snackbar .mdc-snackbar__surface .ng-tns-c105-4 {
+    background: white !important;
+    color: rgb(202, 131, 0) !important;
+    border-radius: 8px !important;
+}
+
+.mdc-snackbar__surface {
+    padding-right: 0 !important;
+}
+
+.cdk-overlay-pane {
+    margin-bottom: 1rem !important;
+}
+
+.mdc-snackbar__actions {
+    border-left: 1px solid rgba(128, 128, 128, 0.253) !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background: white !important;
+}
+
+.mat-mdc-simple-snack-bar {
+    background: transparent !important;
+}
+
+.mat-mdc-snack-bar-label .mdc-snackbar__label {
+    color: rgb(202, 131, 0) !important;
+}
+
+.mdc-button__label {
+    color: rgb(202, 131, 0) !important;
+}
+
+/* .mat-snack-bar-content {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mat-snack-bar-action {
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.mat-snack-bar-dismiss {
+    color: #cccccc;
+} */
+  
