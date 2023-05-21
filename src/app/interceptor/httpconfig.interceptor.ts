@@ -18,6 +18,7 @@ export class HttpconfigInterceptor implements HttpInterceptor {
   constructor(private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
+        window.scrollY = 0;
         this.estadoPeticionPendiente.next(true);
       }
       if (event instanceof NavigationError || event instanceof NavigationEnd || event instanceof NavigationCancel) {

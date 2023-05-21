@@ -16,3 +16,19 @@
     opacity: 1;
     transform: translateY(0%);
 }
+
+/* file upload button */
+input[type="file"]::file-selector-button {
+  background-color: orange !important;
+  color: white !important;
+}
+
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+  background-color: rgb(255, 174, 22) !important;
+}
+
+/* file upload button active state */
+input[type="file"]::file-selector-button:active {
+  background-color: rgb(255, 195, 84);
+}

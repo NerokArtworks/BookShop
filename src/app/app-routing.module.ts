@@ -10,15 +10,17 @@ import { AuthGuard } from './guards/auth.guard';
 import { LogoutComponent } from './views/logout/logout.component';
 import { RegisterComponent } from './views/register/register.component';
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
+import { SearchComponent } from './views/books/search/search.component';
 
 const routes: Routes = [
-  {path: 'admin', component:DashboardComponent, data: { animation: 'fader' }},
+  {path: 'admin', canActivate:[AuthGuard], component:DashboardComponent, data: { animation: 'fader' }},
   {path: 'register', component:RegisterComponent, data: { animation: 'fader' }},
   {path: 'login', component:LoginComponent, data: { animation: 'fader' }},
   {path:'logout', canActivate:[AuthGuard], component:LogoutComponent},
   {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
   {path: 'genero/:id', component:FeedComponent, data: { animation: 'fader'}},
+  {path: 'buscar/:filter', component:SearchComponent, data: { animation: 'fader'}},
   {path: 'autores', component:AuthorsComponent, data: { animation: 'fader'}},
   {path: 'index', component:IndexComponent, data: { animation: 'fader'}},
   {path: '**', redirectTo:"index", data: { animation: 'fader'}},

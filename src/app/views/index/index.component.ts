@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Libro } from 'src/app/interfaces/Libro';
 import { fader } from 'src/app/route-animations';
 import { RestService } from 'src/app/services/api/rest.service';
@@ -9,14 +11,15 @@ import { RestService } from 'src/app/services/api/rest.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit{
-  libros: Libro[] = [];
-  librosHero: Libro[] = [];
-  librosBrandon: Libro[] = [];
-  librosBrandonShow: Libro[] = [];
-  librosRobert: Libro[] = [];
-  librosRobertShow: Libro[] = [];
-  librosManga: Libro[] = [];
-  constructor(private LibroService: RestService) { }
+  protected libros: Libro[] = [];
+  protected librosHero: Libro[] = [];
+  protected librosBrandon: Libro[] = [];
+  protected librosBrandonShow: Libro[] = [];
+  protected librosRobert: Libro[] = [];
+  protected librosRobertShow: Libro[] = [];
+  protected librosManga: Libro[] = [];
+  protected filtro!: string;
+  constructor(private LibroService: RestService, private router: Router) { }
 
   ngOnInit(): void {
     this.LibroService.getLibros().subscribe(libro => { (this.libros = libro); console.log(libro); console.log(libro[0].id); this.loadHero(); });
@@ -53,5 +56,12 @@ export class IndexComponent implements OnInit{
         this.librosRobertShow.push(l);
       }
     });
+  }
+
+  buscarLibros(form:NgForm) {
+    if (form.valid) {
+      console.log(form.value.filtro);
+      this.router.navigate(['/buscar/' + form.value.filtro]);
+    }
   }
 }

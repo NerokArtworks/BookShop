@@ -15,8 +15,8 @@ export interface LoginResponse {
 
 export class AuthService {
 
-  // private readonly apiUrl="http://localhost:8080/usuarios/";
-  private readonly apiUrl = 'https://whatthebook.up.railway.app/usuarios/';
+  private readonly apiUrl="http://localhost:8080/usuarios/";
+  // private readonly apiUrl = 'https://whatthebook.up.railway.app/usuarios/';
   private readonly tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {

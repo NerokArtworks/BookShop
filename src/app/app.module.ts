@@ -34,6 +34,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateBookComponent } from './views/admin/books/create-book/create-book.component';
 import { ShowOrderComponent } from './views/admin/orders/show-order/show-order.component';
+import { SearchComponent } from './views/books/search/search.component';
 
 
 // const appRoutes:Routes = [
@@ -74,6 +75,7 @@ import { ShowOrderComponent } from './views/admin/orders/show-order/show-order.c
     ConfirmationDialogComponent,
     CreateBookComponent,
     ShowOrderComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

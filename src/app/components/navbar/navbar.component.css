@@ -6,6 +6,10 @@ nav {
   z-index: 100;
 }
 
+.full-menu {
+  margin-top: 1rem !important;
+}
+
 .icon-con {
   transition: .3s ease;
 }

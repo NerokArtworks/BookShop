@@ -239,19 +239,16 @@
                                     No puede estar vacío</div>
                             </div>
                             <div>
-                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
-                                    <label for="portada" class="text-sm text-gray-600">Imagen de portada (subir previamente a la carpeta assets)</label>
-                                </div>
-                                <input autocomplete="off" required name="portada" id="portada" type="file" (change)="updatePortada($event)"
-                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="portada">Upload file</label>
+                                <input (change)="updatePortada($event)" class="block transition-all duration-300 ease w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none"
+                                 id="portada" name="portada" required type="file">
+
                                 <div *ngIf="formulario.controls['portada']"
                                     [class.show-alert]="formulario.controls['portada'].invalid && (formulario.controls['portada'].dirty || formulario.controls['portada'].touched)"
                                     class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
                                     Debes seleccionar una portada</div>
                             </div>
                         </div>
-
-
 
                         <div class="mt-4">
                             <button type="submit"

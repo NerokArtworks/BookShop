@@ -32,19 +32,24 @@ export class CreateBookComponent {
   protected rating: number = 0;
   protected stock!: number;
   protected oferta!: string;
+  protected tipoFinal!: string;
   // @Output() callEditBook = new EventEmitter<Libro>();
 
   constructor(private RestService: RestService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.RestService.getGeneros().subscribe(genero => { 
+    this.RestService.getGeneros().subscribe(genero => {
       (this.generos = genero);
     });
 
-    this.RestService.getEditoriales().subscribe(editorial => { 
+    this.RestService.getEditoriales().subscribe(editorial => {
       (this.editoriales = editorial);
     });
   }
+
+  // updateTipos() {
+  //   this.libro.tipo = this.tipos.join(",");
+  // }
 
   updatePortada(event: any) {
     const file = event.target.files[0];
@@ -68,7 +73,7 @@ export class CreateBookComponent {
         descripcion: form.value.descripcion,
         sinopsis: form.value.sinopsis,
         precio: form.value.precio,
-        tipo: form.value.tipo,
+        tipo: form.value.tipo.join(','),
         portada: this.portada,
         rating: form.value.rating,
         stock: form.value.stock,
@@ -101,7 +106,7 @@ export class CreateBookComponent {
       panelClass: 'success-snackbar' // Clase CSS personalizada para la apariencia de éxito
     });
   }
-  
+
   showErrorAlert() {
     this.snackBar.open('Error al crear el libro', 'Cerrar', {
       duration: 3000, // Duración en milisegundos

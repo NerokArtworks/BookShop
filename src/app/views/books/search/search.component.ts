@@ -1,14 +1,14 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Genero } from 'src/app/interfaces/Genero';
 import { Libro } from 'src/app/interfaces/Libro';
 import { RestService } from 'src/app/services/api/rest.service';
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css'],
   animations: [
     trigger('fadeAnimation', [
       state('void', style({ opacity: 0, transform: 'scale(0)' })),
@@ -21,25 +21,21 @@ import { RestService } from 'src/app/services/api/rest.service';
     ])
   ]
 })
-export class FeedComponent implements OnInit {
+export class SearchComponent {
   protected id_genero!: number;
   public libros: Libro[] = [];
   public generos: Genero[] = [];
-  protected genero!: string;
   protected pageLoaded: boolean = false;
   protected results: Libro[] = [];
+  protected initialQuery!: string | null;
 
-  constructor(private LibroService: RestService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private LibroService: RestService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const id_genero = this.route.snapshot.paramMap.get('id');
-    console.log(`Cargando datos del género: ${id_genero}`);
-    if (id_genero) {
-      this.id_genero = parseInt(id_genero, 10);
-      console.log(`Convertido: ${id_genero}`);
-      this.LibroService.getLibrosByGenero(this.id_genero).subscribe(libro => {(this.libros = libro); (this.results = libro); this.loadFeed();});
-      this.LibroService.getGeneros().subscribe(genero => {(this.generos = genero); this.loadFeed();});
-    }
+    this.initialQuery = this.route.snapshot.paramMap.get('filter');
+    console.log(this.initialQuery);
+    this.LibroService.getLibros().subscribe(libro => {(this.libros = libro); (this.results = libro); this.loadFeed();});
+    this.LibroService.getGeneros().subscribe(genero => {(this.generos = genero); this.loadFeed();});
   }
 
   loadFeed(): void {
@@ -50,16 +46,10 @@ export class FeedComponent implements OnInit {
       console.log("Libros y géneros cargados");
       this.libros.forEach(l => {
         l.oferta = (l.precio * 0.95).toFixed(2);
-        that.generos.forEach(g => {
-          if (l.id_genero == g.id) {
-            l.genero = g.titulo;
-            that.genero = l.genero;
-            that.pageLoaded = true;
-            console.log("Libro encontrado: ", l, "Género: ", that.genero);
-          }
-        });
       });
       this.shuffle(this.libros);
+      this.buscarLibros();
+      that.pageLoaded = true;
     }
   }
 
@@ -82,17 +72,24 @@ export class FeedComponent implements OnInit {
     return array;
   }
 
-  buscarLibros(event: any) {
-    const query = event.target.value.toLowerCase();
+  buscarLibros(event?: any) {
+    if (!event && this.initialQuery != null) {
+      let query = this.initialQuery;
 
-    if (!query) {
-      this.results = this.libros;
-      return;
+      this.results = this.libros.filter(libro =>
+        libro.titulo.toLowerCase().includes(query) || libro.autor.toLowerCase().includes(query) || libro.saga.toLowerCase().includes(query)
+      );
+    } else {
+      const query = event.target.value.toLowerCase();
+
+      if (!query) {
+        this.results = this.libros;
+        return;
+      }
+
+      this.results = this.libros.filter(libro =>
+        libro.titulo.toLowerCase().includes(query) || libro.autor.toLowerCase().includes(query) || libro.saga.toLowerCase().includes(query)
+      );
     }
-
-    this.results = this.libros.filter(libro =>
-      libro.titulo.toLowerCase().includes(query) || libro.autor.toLowerCase().includes(query) || libro.saga.toLowerCase().includes(query)
-    );
   }
-
 }

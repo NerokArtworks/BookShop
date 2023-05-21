@@ -10,7 +10,8 @@
             <span class="hidden md:block">ADMIN</span>
         </div>
         <div class="flex justify-between items-center h-14 header-right">
-            <div class="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
+          <div class=""></div>
+            <!-- <div class="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
                 <button class="outline-none focus:outline-none">
                     <svg class="w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
@@ -19,7 +20,7 @@
                 </button>
                 <input type="search" name="" id="" placeholder="Search"
                     class="w-full pl-3 text-sm text-gray-900 outline-none focus:outline-none bg-transparent" />
-            </div>
+            </div> -->
             <ul class="flex items-center">
                 <!-- <li>
                     <button aria-hidden="true"
@@ -182,7 +183,7 @@
     <app-orders [@fade] *ngIf="pedidos && currentTab == 2" [pedidos]="pedidos" (callShowOrder)="showOrderView($event)" (callDeleteOrder)="deleteOrder($event)"></app-orders>
     <app-show-order [@fade] *ngIf="pedidos && currentTab == 'showOrder'" [pedido]="pedido"></app-show-order>
     <app-users [@fade] *ngIf="usuarios && currentTab == 4" [usuarios]="usuarios"></app-users>
-    <app-books [@fade] *ngIf="libros && currentTab == 3" [libros]="libros" 
+    <app-books [@fade] *ngIf="libros && currentTab == 3" [libros]="libros"
         (callEditBook)="showEditView($event)" (callDeleteBook)="deleteBook($event)" (callCreateBook)="showCreateView()"></app-books>
     <app-edit-book [@fade] *ngIf="libros && currentTab == 'libro'" [libro]="libro"></app-edit-book>
     <app-create-book [@fade] *ngIf="currentTab == 'createBook'"></app-create-book>
