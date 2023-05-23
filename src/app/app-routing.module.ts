@@ -11,6 +11,8 @@ import { LogoutComponent } from './views/logout/logout.component';
 import { RegisterComponent } from './views/register/register.component';
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 import { SearchComponent } from './views/books/search/search.component';
+import { RecentComponent } from './views/books/recent/recent.component';
+import { TopSellersComponent } from './views/books/top-sellers/top-sellers.component';
 
 const routes: Routes = [
   {path: 'admin', canActivate:[AuthGuard], component:DashboardComponent, data: { animation: 'fader' }},
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent, data: { animation: 'fader' }},
   {path:'logout', canActivate:[AuthGuard], component:LogoutComponent},
   {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
+  {path: 'novedades', component:RecentComponent, data: { animation: 'fader'}},
+  {path: 'top', component:TopSellersComponent, data: { animation: 'fader'}},
   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
   {path: 'genero/:id', component:FeedComponent, data: { animation: 'fader'}},
   {path: 'buscar/:filter', component:SearchComponent, data: { animation: 'fader'}},

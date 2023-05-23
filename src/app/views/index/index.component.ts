@@ -19,6 +19,7 @@ export class IndexComponent implements OnInit{
   protected librosRobertShow: Libro[] = [];
   protected librosManga: Libro[] = [];
   protected filtro!: string;
+  
   constructor(private LibroService: RestService, private router: Router) { }
 
   ngOnInit(): void {

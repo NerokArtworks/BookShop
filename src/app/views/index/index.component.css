@@ -1,15 +1,23 @@
-
-
-.title {
-  font-size: 4vw;
-}
-
 .intro {
   /* font-size: .9vw; */
 }
 
 main {
   padding-top: 10vh;
+}
+
+.search-bg {
+  background-image: url('../../../assets/img/bibe.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.services-bg {
+  background-image: url('../../../assets/img/search.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 .book:hover > .price {

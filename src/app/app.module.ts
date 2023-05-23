@@ -35,6 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateBookComponent } from './views/admin/books/create-book/create-book.component';
 import { ShowOrderComponent } from './views/admin/orders/show-order/show-order.component';
 import { SearchComponent } from './views/books/search/search.component';
+import { RecentComponent } from './views/books/recent/recent.component';
+import { TopSellersComponent } from './views/books/top-sellers/top-sellers.component';
 
 
 // const appRoutes:Routes = [
@@ -76,6 +78,8 @@ import { SearchComponent } from './views/books/search/search.component';
     CreateBookComponent,
     ShowOrderComponent,
     SearchComponent,
+    RecentComponent,
+    TopSellersComponent,
   ],
   imports: [
     BrowserModule,

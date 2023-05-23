@@ -1,0 +1,16 @@
+main {
+    padding-top: 10vh;
+}
+
+.more-section {
+    background-image: url('../../../../assets/img/book.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.book:hover > .price {
+    opacity: 100;
+    transform: translate(-50%, 0);
+}

@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Libro } from 'src/app/interfaces/Libro';
@@ -22,7 +23,7 @@ export class NavbarComponent implements OnInit {
   protected cestaItems!: any[];
   protected emptyCart: boolean = false;
 
-  constructor(protected routerp:Router, private RestService: RestService, private CestaService: CestaService) {
+  constructor(protected routerp:Router, private RestService: RestService, private CestaService: CestaService, private viewportScroller: ViewportScroller) {
     this.router = routerp;
   }
 
@@ -50,5 +51,9 @@ export class NavbarComponent implements OnInit {
         this.index = true;
       }
     });
+  }
+
+  scrollToFooter() {
+    this.viewportScroller.scrollToAnchor('contact');
   }
 }

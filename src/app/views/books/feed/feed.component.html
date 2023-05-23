@@ -1,12 +1,12 @@
 <section class="w-full breadcumb relative px-6 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0]">
   <div class="container max-w-screen-lg xl:max-w-screen-xl h-full flex items-center mx-auto font-bold">
-      <span *ngIf="genero" class="font-light"><a href="/home" class="hover:underline hover:text-orange-500 px-1">Inicio</a>/</span>{{genero}}
+      <span *ngIf="genero" class="font-light"><a href="/home" class="hover:underline hover:text-orange-500 px-1">Inicio / </a></span>{{genero}}
   </div>
 </section>
 <main class="main-wrapper relative feed">
   <section *ngIf="pageLoaded" class="md:max-w-screen-md px-4 transition-all xl:max-w-screen-xl mx-auto min-h-screen nav-margin mb-20">
     <!-- section header -->
-    <header class="text-center mx-auto mb-8 px flex flex-col gap-4 w-3/4 md:w-full lg:max-w-screen-lg mt-2">
+    <header class="text-center mx-auto mb-8 px-5 pb-10 pt-10 flex flex-col gap-10 w-3/4 md:w-full xl:w-10/12 2xl:w-full">
       <h2 class="text-2xl leading-normal capitalize hero-title font-bold text-gray-800">
           {{genero}}
       </h2>
