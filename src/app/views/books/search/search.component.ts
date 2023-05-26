@@ -1,9 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Genero } from 'src/app/interfaces/Genero';
 import { Libro } from 'src/app/interfaces/Libro';
 import { RestService } from 'src/app/services/api/rest.service';
+import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-search',
@@ -28,8 +29,20 @@ export class SearchComponent {
   protected pageLoaded: boolean = false;
   protected results: Libro[] = [];
   protected initialQuery!: string | null;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  customPaginatorIntl: MatPaginatorIntl = new MatPaginatorIntl();
 
-  constructor(private LibroService: RestService, private route: ActivatedRoute) {}
+  startIndex = 0; // Índice de inicio de la página actual
+  endIndex = 15; // Índice de fin de la página actual
+
+  constructor(private LibroService: RestService, private route: ActivatedRoute, @Inject(MatPaginatorIntl) private paginatorIntl: MatPaginatorIntl) {
+    // Custom Paginator Text
+    this.paginatorIntl.itemsPerPageLabel = 'Libros por página:';
+    this.paginatorIntl.nextPageLabel = 'Siguiente página';
+    this.paginatorIntl.previousPageLabel = 'Página anterior';
+    this.paginatorIntl.firstPageLabel = 'Primera página';
+    this.paginatorIntl.lastPageLabel = 'Última página';
+  }
 
   ngOnInit(): void {
     this.initialQuery = this.route.snapshot.paramMap.get('filter');
@@ -91,5 +104,18 @@ export class SearchComponent {
         libro.titulo.toLowerCase().includes(query) || libro.autor.toLowerCase().includes(query) || libro.saga.toLowerCase().includes(query)
       );
     }
+  }
+
+  // Paginator 
+  onPageChange(event: any): void {
+    const pageEvent = event as PageEvent;
+    this.startIndex = pageEvent.pageIndex * pageEvent.pageSize;
+    setTimeout(() => {
+      this.endIndex = this.startIndex + pageEvent.pageSize;
+    }, 299);
+  }
+
+  getBooksForPage(): any[] {
+    return this.results;
   }
 }

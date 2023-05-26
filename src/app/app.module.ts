@@ -37,6 +37,8 @@ import { ShowOrderComponent } from './views/admin/orders/show-order/show-order.c
 import { SearchComponent } from './views/books/search/search.component';
 import { RecentComponent } from './views/books/recent/recent.component';
 import { TopSellersComponent } from './views/books/top-sellers/top-sellers.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 
 // const appRoutes:Routes = [
@@ -92,12 +94,15 @@ import { TopSellersComponent } from './views/books/top-sellers/top-sellers.compo
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     ConfirmationDialogComponent
   ],
-  providers: [],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntl },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

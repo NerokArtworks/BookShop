@@ -1,13 +1,26 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Inject, ViewChild } from '@angular/core';
 import { Libro } from 'src/app/interfaces/Libro';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
+import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
+  animations: [
+    trigger('fadeAnimation', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', [
+        animate('300ms cubic-bezier(0.68, 0.27, 0.32, 1.37)', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms cubic-bezier(0.68, 0.27, 0.32, 1.37)', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class BooksComponent {
   @Input() libros!: Libro[];
@@ -15,9 +28,22 @@ export class BooksComponent {
   @Output() callCreateBook = new EventEmitter();
   @Output() callDeleteBook: EventEmitter<Libro> = new EventEmitter<Libro>();
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  customPaginatorIntl: MatPaginatorIntl = new MatPaginatorIntl();
+  
+  startIndex = 0; // Índice de inicio de la página actual
+  endIndex = 5; // Índice de fin de la página actual
+
   protected ordenActual: { columna: string, direccion: 'asc' | 'desc' } = { columna: 'id', direccion: 'asc' };
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, @Inject(MatPaginatorIntl) private paginatorIntl: MatPaginatorIntl) {
+    // Custom Paginator Text
+    this.paginatorIntl.itemsPerPageLabel = 'Libros por página:';
+    this.paginatorIntl.nextPageLabel = 'Siguiente página';
+    this.paginatorIntl.previousPageLabel = 'Página anterior';
+    this.paginatorIntl.firstPageLabel = 'Primera página';
+    this.paginatorIntl.lastPageLabel = 'Última página';
+  }
 
   openConfirmationDialog(libro: Libro): void {
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialog.open(ConfirmationDialogComponent, {
@@ -105,5 +131,18 @@ export class BooksComponent {
 
   createBook() {
     this.callCreateBook.emit();
+  }
+
+  // Paginator 
+  onPageChange(event: any): void {
+    const pageEvent = event as PageEvent;
+    this.startIndex = pageEvent.pageIndex * pageEvent.pageSize;
+    setTimeout(() => {
+      this.endIndex = this.startIndex + pageEvent.pageSize;
+    }, 299);
+  }
+
+  getBooksForPage(): any[] {
+    return this.libros;
   }
 }

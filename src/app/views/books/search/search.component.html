@@ -34,7 +34,7 @@
 
     <div class="grid gap-y-10 gap-x-2 xl:w-10/12 2xl:w-full mx-auto items-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       <!-- Item 1 -->
-      <div class="relative space-y-4 text-center" *ngFor="let l of results" [@fadeAnimation]>
+      <div class="relative space-y-4 text-center" *ngFor="let l of getBooksForPage() | slice: startIndex:endIndex" [@fadeAnimation]>
         <div class="relative book">
           <a [routerLink]="['/ver', l.id]" routerLinkActive="router-link-active" >
             <img class="w-64 h-64 md:w-10/12 md:h-full mx-auto transition duration-200 hover:brightness-110 hover:drop-shadow-lg object-contain md:object-cover cursor-pointer rounded-xl"
@@ -59,5 +59,6 @@
         </div>
       </div>
     </div>
+    <mat-paginator class="xl:w-10/12 2xl:w-full mx-auto mt-5" [length]="results.length" [pageSize]="15" [pageSizeOptions]="[15, 30, 45]" (page)="onPageChange($event)"></mat-paginator>
   </section>
 </main>

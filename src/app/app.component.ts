@@ -11,7 +11,7 @@ import { fader } from './route-animations';
   ]
 })
 export class AppComponent {
-  title = 'BookShop';
+  title = 'WhatTheBook';
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

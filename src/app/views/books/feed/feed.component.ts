@@ -1,9 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Genero } from 'src/app/interfaces/Genero';
 import { Libro } from 'src/app/interfaces/Libro';
 import { RestService } from 'src/app/services/api/rest.service';
+import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
+
+
 
 @Component({
   selector: 'app-feed',
@@ -28,8 +31,21 @@ export class FeedComponent implements OnInit {
   protected genero!: string;
   protected pageLoaded: boolean = false;
   protected results: Libro[] = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  customPaginatorIntl: MatPaginatorIntl = new MatPaginatorIntl();
+  
+  startIndex = 0; // Índice de inicio de la página actual
+  endIndex = 15; // Índice de fin de la página actual
 
-  constructor(private LibroService: RestService, private route: ActivatedRoute, private router: Router) {}
+
+  constructor(private LibroService: RestService, private route: ActivatedRoute, private router: Router, @Inject(MatPaginatorIntl) private paginatorIntl: MatPaginatorIntl) {
+    // Custom Paginator Text
+    this.paginatorIntl.itemsPerPageLabel = 'Libros por página:';
+    this.paginatorIntl.nextPageLabel = 'Siguiente página';
+    this.paginatorIntl.previousPageLabel = 'Página anterior';
+    this.paginatorIntl.firstPageLabel = 'Primera página';
+    this.paginatorIntl.lastPageLabel = 'Última página';
+  }
 
   ngOnInit(): void {
     const id_genero = this.route.snapshot.paramMap.get('id');
@@ -41,6 +57,7 @@ export class FeedComponent implements OnInit {
       this.LibroService.getGeneros().subscribe(genero => {(this.generos = genero); this.loadFeed();});
     }
   }
+  
 
   loadFeed(): void {
     console.log(this.generos, this.libros);
@@ -95,4 +112,16 @@ export class FeedComponent implements OnInit {
     );
   }
 
+  // Paginator 
+  onPageChange(event: any): void {
+    const pageEvent = event as PageEvent;
+    this.startIndex = pageEvent.pageIndex * pageEvent.pageSize;
+    setTimeout(() => {
+      this.endIndex = this.startIndex + pageEvent.pageSize;
+    }, 299);
+  }
+
+  getBooksForPage(): any[] {
+    return this.results;
+  }
 }
