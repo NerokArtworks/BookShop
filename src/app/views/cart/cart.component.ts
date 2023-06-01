@@ -131,7 +131,8 @@ export class CartComponent implements OnInit{
       importe:Math.round((importeTotal + Number.EPSILON) * 100) / 100,
       detallesPedidos: detallesPedido,
       descuento: null,
-      usuario: this.user
+      usuario: this.user,
+      result: null,
     }
     console.log("Detalles del pedido: ", detallesPedido);
     console.log("Pedido: ", pedido);

@@ -45,6 +45,9 @@ export class RegisterComponent {
           pais: null,
           email: email,
           telefono: null,
+          direccion: null,
+          saldo: 0,
+          ciudad: null,
           socio: 0,
           rol: null
         };

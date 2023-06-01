@@ -9,4 +9,5 @@ export interface Pedido {
     descuento: Descuento | null;
     usuario: Usuario;
     tracking?: number;
+    result: string|null;
 }

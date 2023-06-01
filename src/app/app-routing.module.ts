@@ -13,9 +13,11 @@ import { DashboardComponent } from './views/admin/dashboard/dashboard.component'
 import { SearchComponent } from './views/books/search/search.component';
 import { RecentComponent } from './views/books/recent/recent.component';
 import { TopSellersComponent } from './views/books/top-sellers/top-sellers.component';
+import { ProfileComponent } from './views/user/profile/profile.component';
 
 const routes: Routes = [
   {path: 'admin', canActivate:[AuthGuard], component:DashboardComponent, data: { animation: 'fader' }},
+  {path: 'user', canActivate:[AuthGuard], component:ProfileComponent, data: { animation: 'fader' }},
   {path: 'register', component:RegisterComponent, data: { animation: 'fader' }},
   {path: 'login', component:LoginComponent, data: { animation: 'fader' }},
   {path:'logout', canActivate:[AuthGuard], component:LogoutComponent},

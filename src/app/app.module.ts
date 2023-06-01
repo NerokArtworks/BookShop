@@ -39,6 +39,12 @@ import { RecentComponent } from './views/books/recent/recent.component';
 import { TopSellersComponent } from './views/books/top-sellers/top-sellers.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { ProfileComponent } from './views/user/profile/profile.component';
+import { InfoComponent } from './views/user/info/info.component';
+import { UserOrdersComponent } from './views/user/user-orders/user-orders.component';
+import { OrderDetailsComponent } from './views/user/user-orders/order-details/order-details.component';
+import { EditUserInfoComponent } from './views/user/info/edit-user-info/edit-user-info.component';
+import { PartnerComponent } from './views/user/partner/partner.component';
 
 
 // const appRoutes:Routes = [
@@ -82,6 +88,12 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
     SearchComponent,
     RecentComponent,
     TopSellersComponent,
+    ProfileComponent,
+    InfoComponent,
+    UserOrdersComponent,
+    OrderDetailsComponent,
+    EditUserInfoComponent,
+    PartnerComponent,
   ],
   imports: [
     BrowserModule,

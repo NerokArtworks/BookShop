@@ -1,0 +1,18 @@
+.form-feedback {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.form-feedback.active {
+    opacity: 1;
+}
+
+.form-feedback-container {
+    height: 30px;
+    overflow: hidden;
+}
+
+.show-alert {
+    opacity: 1;
+    transform: translateY(0%);
+}

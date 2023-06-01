@@ -54,6 +54,13 @@ export class RestService {
   }
 
   // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
+  public getPedidosByUser(id: any): Observable<Pedido[]> {
+    const url = `${this.apiUrl}/pedidos/getByUser`;
+    const body = { id: id };
+    return this.http.post<Pedido[]>(url, body);
+  }
+
+  // GET que devuelve un observable de array de objetos del tipo Proyecto de la interface
   public getUser(id: any): Observable<Usuario> {
     const url = `${this.apiUrl}/usuarios/obtener1`;
     const body = { id: id };
@@ -102,6 +109,11 @@ export class RestService {
   public updateLibro(libro: Libro): Observable<Libro> {
     const url = `${this.apiUrl}/libros/modificar`;
     return this.http.put<Libro>(url, libro, httpOptions);
+  }
+
+  public updateUsuario(user: Usuario): Observable<Usuario> {
+    const url = `${this.apiUrl}/usuarios/modificar`;
+    return this.http.put<Usuario>(url, user, httpOptions);
   }
 
   public deleteLibro(id: string | null | number | undefined): Observable<Libro> {

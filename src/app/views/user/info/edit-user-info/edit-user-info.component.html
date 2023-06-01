@@ -1,0 +1,153 @@
+<div class="h-full ml-14 mt-14 dash-container border-b border-gray-300 rounded-bl-md pb-10 md:ml-64 bg-gradient-to-b from-[#FFFFFF] to-[#F9E6E0]">
+    <div class="grid grid-cols-1 lg:grid-cols-1 p-4 gap-8">
+        <div class="relative flex flex-col min-w-0 lg:mb-0 break-words bg-gray-50 py-6 w-full shadow-lg rounded">
+            <div class="rounded-t mb-0 px-0 border-0">
+                <div class="flex flex-wrap items-center px-8 py-2">
+                    <div class="relative w-full max-w-full flex-grow flex-1">
+                        <h3 class="font-semibold text-xl text-gray-900 uppercase">Datos</h3>
+                    </div>
+                </div>
+                <div class="block w-full overflow-x-auto p-8">
+                    <form #formulario="ngForm" (ngSubmit)="edit(formulario)" *ngIf="user">
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-3 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="username" class="text-sm text-gray-600">Nombre de usuario</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.username" required name="username" id="username"
+                                    placeholder="{{user.username}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['username']"
+                                    [class.show-alert]="formulario.controls['username'].invalid && (formulario.controls['username'].dirty || formulario.controls['username'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="nombre" class="text-sm text-gray-600">Nombre</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.nombre" required name="nombre" id="nombre"
+                                    placeholder="{{user.nombre}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['nombre']"
+                                    [class.show-alert]="formulario.controls['nombre'].invalid && (formulario.controls['nombre'].dirty || formulario.controls['nombre'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <label for="apellidos" class="text-sm text-gray-600">Apellidos</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.apellidos" required name="apellidos" id="apellidos" type="text"
+                                    placeholder="{{user.apellidos}}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['apellidos']"
+                                    [class.show-alert]="formulario.controls['apellidos'].invalid && (formulario.controls['apellidos'].dirty || formulario.controls['apellidos'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-3 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="fecha_nac" class="text-sm text-gray-600">Fecha de nacimiento</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.fecha_nac" required name="fecha_nac" id="fecha_nac" type="date"
+                                    placeholder="fecha_nac"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['fecha_nac']"
+                                    [class.show-alert]="formulario.controls['fecha_nac'].invalid && (formulario.controls['fecha_nac'].dirty || formulario.controls['fecha_nac'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="dni" class="text-sm text-gray-600">DNI</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.dni" required name="dni" id="dni" type="text"
+                                    placeholder="DNI" pattern="^[0-9]{8}[A-Za-z]$"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['dni']"
+                                    [class.show-alert]="formulario.controls['dni'].invalid && (formulario.controls['dni'].dirty || formulario.controls['dni'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    DNI inválido: 12345678X</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="email" class="text-sm text-gray-600">Correo electrónico</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.email" required name="email" id="email" type="text"
+                                    placeholder="Correo electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['email']"
+                                    [class.show-alert]="formulario.controls['email'].invalid && (formulario.controls['email'].dirty || formulario.controls['email'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    Correo electrónico inválido: ejemplo@ejemplo.ejemplo</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-4 md:gap-2">
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="pais" class="text-sm text-gray-600">País</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.pais" required name="pais" id="pais" type="text"
+                                    placeholder="País"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['pais']"
+                                    [class.show-alert]="formulario.controls['pais'].invalid && (formulario.controls['pais'].dirty || formulario.controls['pais'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="ciudad" class="text-sm text-gray-600">Ciudad</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.ciudad" required name="ciudad" id="ciudad" type="text"
+                                    placeholder="Ciudad"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['ciudad']"
+                                    [class.show-alert]="formulario.controls['ciudad'].invalid && (formulario.controls['ciudad'].dirty || formulario.controls['ciudad'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="direccion" class="text-sm text-gray-600">Dirección</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.direccion" required name="direccion" id="direccion" type="text"
+                                    placeholder="Dirección"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['direccion']"
+                                    [class.show-alert]="formulario.controls['direccion'].invalid && (formulario.controls['direccion'].dirty || formulario.controls['direccion'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mt-6 md:mt-0 mb-2">
+                                    <label for="telefono" class="text-sm text-gray-600">Teléfono de contacto</label>
+                                </div>
+                                <input autocomplete="off" [(ngModel)]="user.telefono" required name="telefono" id="telefono" type="text"
+                                    placeholder="Teléfono de contacto"
+                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <div *ngIf="formulario.controls['telefono']"
+                                    [class.show-alert]="formulario.controls['telefono'].invalid && (formulario.controls['telefono'].dirty || formulario.controls['telefono'].touched)"
+                                    class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                                    No puede estar vacío</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit"
+                                class="w-full px-4 py-2 tracking-wide text-white transform bg-gradient-to-r from-orange-300 to-orange-500 hover:from-orange-500 hover:to-yellow-500 hover:shadow-xl cursor-pointer rounded-md transition-all duration-300 focus:outline-none focus:bg-orange-400 focus:ring focus:ring-orange-300 focus:ring-opacity-50">
+                                Guardar cambios
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,9 @@ export interface Usuario {
     fecha_nac:Date;
     fecha_creacion:Date;
     pais:string|null;
+    direccion:string|null;
+    ciudad:string|null;
+    saldo:number;
     email:string;
     telefono:string|null;
     socio:Number;

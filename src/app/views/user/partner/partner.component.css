@@ -1,0 +1,7 @@
+.profile-bg {
+    background-image: url('.././../../../assets/img/orange-lens.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
