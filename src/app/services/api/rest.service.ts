@@ -6,6 +6,7 @@ import { Pedido } from 'src/app/interfaces/Pedido';
 import { Genero } from 'src/app/interfaces/Genero';
 import { Usuario } from 'src/app/interfaces/Usuario';
 import { DetallesPedido } from 'src/app/interfaces/DetallesPedido';
+import { Descuento } from 'src/app/interfaces/Descuento';
 
 // Cabeceras indicando el tipo de información a enviar
 const httpOptions={
@@ -81,6 +82,10 @@ export class RestService {
 
   public getGeneros() {
     return this.http.get<Genero[]>(this.apiUrl + '/generos/obtener');
+  }
+
+  public getDescuentos() {
+    return this.http.get<Descuento[]>(this.apiUrl + '/descuentos/obtener');
   }
 
   public getEditoriales() {

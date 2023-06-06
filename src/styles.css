@@ -6,8 +6,14 @@
 html {
   font-family: 'OptimaTL_Regular';
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: unset;
   scroll-behavior: smooth;
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+  }
 }
 
 body {

@@ -6,7 +6,7 @@ export interface Pedido {
     fecha: Date;
     importe: number;
     detallesPedidos: any[] | null;
-    descuento: Descuento | null;
+    descuento: Descuento | string | number | null;
     usuario: Usuario;
     tracking?: number;
     result: string|null;

@@ -11,7 +11,7 @@ export class CestaService {
     this.updateItems();
   }
 
-  addItem(item: Libro): void {
+  addItem(item: Libro): boolean {
     this.updateItems();
 
     // Controlar que la cantidad por defecto no está asignada
@@ -30,10 +30,16 @@ export class CestaService {
       const libroExistente = filteredItems[0];
       console.log("Tapa del item existente: ", item.tapa);
       console.log('Libro ya existe en cesta: ', libroExistente, `, cantidad: ${libroExistente.cantidad}`);
-      libroExistente.cantidad++;
-      console.log(`Nueva cantidad: ${libroExistente.cantidad}`);
-      // Guardo el array de items con el valor actualizado en localStorage
-      localStorage.setItem('itemsCesta', JSON.stringify(this.items));
+      if (libroExistente.stock >= (Number(libroExistente.cantidad) + 1).toFixed(0)) {
+        libroExistente.cantidad++;
+        console.log(`Nueva cantidad: ${libroExistente.cantidad}`);
+        // Guardo el array de items con el valor actualizado en localStorage
+        localStorage.setItem('itemsCesta', JSON.stringify(this.items));
+        return true;
+      } else {
+        // Se ha superado el stock disponible
+        return false;
+      }
     } else {
       this.items.push(item);
       console.log("Items del servicio: ", this.items)
@@ -41,6 +47,7 @@ export class CestaService {
 
       console.log("Nuevo item en la cesta: ", item);
       console.log(`CestaService length: ${this.items.length}`);
+      return true;
     }
   }
 

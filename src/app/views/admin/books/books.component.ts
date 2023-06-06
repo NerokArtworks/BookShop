@@ -118,8 +118,10 @@ export class BooksComponent {
         return registro.saga;
       case 'autor':
         return registro.autor;
-      case 'descripcion':
-        return registro.descripcion;
+      case 'precio':
+        return registro.precio;
+      case 'stock':
+        return registro.stock;
       default:
         return null;
     }

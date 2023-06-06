@@ -23,9 +23,9 @@ export class IndexComponent implements OnInit{
   constructor(private LibroService: RestService, private router: Router) { }
 
   ngOnInit(): void {
-    this.LibroService.getLibros().subscribe(libro => { (this.libros = libro); console.log(libro); console.log(libro[0].id); this.loadHero(); });
-    this.LibroService.getLibrosByAutor("Brandon Sanderson").subscribe(libro => { (this.librosBrandon = libro); console.log(libro); this.loadBrandon(); });
-    this.LibroService.getLibrosByAutor("Robert Jordan").subscribe(libro => { (this.librosRobert = libro); console.log(libro); this.loadRobert(); });
+    this.LibroService.getLibros().subscribe(libro => { (this.libros = libro); this.loadHero(); });
+    this.LibroService.getLibrosByAutor("Brandon Sanderson").subscribe(libro => { (this.librosBrandon = libro);this.loadBrandon(); });
+    this.LibroService.getLibrosByAutor("Robert Jordan").subscribe(libro => { (this.librosRobert = libro); this.loadRobert(); });
   }
 
   loadHero() {

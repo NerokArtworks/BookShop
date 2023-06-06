@@ -49,9 +49,9 @@
     </section>
 
     <!-- component -->
-    <section class="py-16 pb-28 overflow-hidden">
-        <div class="container m-auto px-6 space-y-8 text-gray-500 md:px-12 more-section py-10 rounded-b-3xl">
-          <article class="w-3/4 lg:max-w-screen-xl lg:w-full mx-auto flex flex-col gap-5 px-6 md:px-12 xl:px-32 py-20 search-bg bg-center md:bg-top">
+    <section class="py-16 pb-28 px-6 md:px-32 overflow-hidden">
+        <div class="container m-auto md:px-6 space-y-8 text-gray-500 md:px-12 more-section py-10 rounded-b-3xl">
+          <article class="w-3/4 lg:max-w-screen-xl lg:w-full mx-auto flex flex-col gap-5 md:px-6 md:px-12 xl:px-32 py-20 search-bg bg-center md:bg-top">
             <h2 class="text-center text-2xl text-gray-900 font-bold w-full">¿No encuentras lo que buscas?</h2>
             <form #formulario="ngForm" class="flex items-center" (ngSubmit)="buscarLibros(formulario)">
               <label for="filtro" class="sr-only">Search</label>

@@ -14,6 +14,7 @@ export class ShowBookComponent implements OnInit{
   public libro!: Libro;
   protected precioOriginal!: number;
   selectedType: string = "tapadura";
+  protected showStockAlert: boolean = false;
 
   // Cesta button
   @ViewChild('addToCartButton') addToCartButton!: ElementRef;
@@ -75,7 +76,9 @@ export class ShowBookComponent implements OnInit{
     this.animarBoton();
     // CESTASERVICE
     console.log("Añadiendo con tapa: ", this.libro.tapa);
-    this.CestaService.addItem(this.libro);
+    if (!this.CestaService.addItem(this.libro)) {
+      this.showStockAlert = true;
+    }
   }
 
   animarBoton() {

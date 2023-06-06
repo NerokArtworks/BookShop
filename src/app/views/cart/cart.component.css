@@ -12,6 +12,11 @@ main {
 
 .pay-card {
   top: 7.5rem;
+  overflow-x: unset !important;
+}
+
+.pay-card-con {
+  overflow-x: unset !important;
 }
 
 .main {

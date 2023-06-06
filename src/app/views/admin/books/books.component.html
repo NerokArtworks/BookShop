@@ -95,14 +95,21 @@
                                         <!-- <i [ngClass]="{'bi bi-arrow-up': ordenActual.direccion === 'asc', 'bi bi-arrow-down': ordenActual.direccion === 'desc'}"></i> -->
                                     </span>
                                 </th>
-                                <th (click)="ordenarRegistros('descripcion', 'libros')"
-                                    class="hidden 2xl:table-cell px-4 sortable select-none cursor-pointer hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
-                                    Descripción
-                                    <span *ngIf="ordenActual.columna === 'descripcion'" class="sort-icon transition-all duration-300" [class]="'fa ' + (ordenActual.direccion === 'asc' ? 'fa-chevron-up' : 'fa-chevron-down')">
+                                <th (click)="ordenarRegistros('precio', 'libros')"
+                                    class="px-4 sortable select-none cursor-pointer hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Precio
+                                    <span *ngIf="ordenActual.columna === 'precio'" class="sort-icon transition-all duration-300" [class]="'fa ' + (ordenActual.direccion === 'asc' ? 'fa-chevron-up' : 'fa-chevron-down')">
                                         <!-- <i [ngClass]="{'bi bi-arrow-up': ordenActual.direccion === 'asc', 'bi bi-arrow-down': ordenActual.direccion === 'desc'}"></i> -->
                                     </span>
                                 </th>
-                                <th
+                                <th (click)="ordenarRegistros('stock', 'libros')"
+                                    class="hidden 2xl:table-cell px-4 sortable select-none cursor-pointer hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                    Stock
+                                    <span *ngIf="ordenActual.columna === 'stock'" class="sort-icon transition-all duration-300" [class]="'fa ' + (ordenActual.direccion === 'asc' ? 'fa-chevron-up' : 'fa-chevron-down')">
+                                        <!-- <i [ngClass]="{'bi bi-arrow-up': ordenActual.direccion === 'asc', 'bi bi-arrow-down': ordenActual.direccion === 'desc'}"></i> -->
+                                    </span>
+                                </th>
+                                <th 
                                     class="px-4 select-none cursor-pointer hover:text-orange-400 hover:bg-white transition-all duration-300 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
                                     Portada
                                 </th>
@@ -130,8 +137,11 @@
                                     class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                     {{l.autor}}</td>
                                 <td
+                                    class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{l.precio}} €</td>
+                                <td
                                     class="hidden 2xl:table-cell border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs p-4">
-                                    {{l.descripcion}}</td>
+                                    {{l.stock}}</td>
                                 <td
                                     class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs p-4">
                                     <img class="w-24 h-full rounded-sm" src="../../../../assets/img/{{l.portada}}" alt="Portada {{l.titulo}}">
