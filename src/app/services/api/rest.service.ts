@@ -18,10 +18,10 @@ const httpOptions={
 })
 export class RestService {
   // URL de la API a consumir (archivo json)
-  private apiUrl = 'http://localhost:8080';
+  // private apiUrl = 'http://localhost:8080';
 
   // Railway hosting
-  // private apiUrl = 'https://whatthebook.up.railway.app';
+  private apiUrl = 'https://whatthebook.up.railway.app';
 
   // Variable HTTP para poder realizar peticiones asíncronas a la API
   constructor(private http: HttpClient) { }

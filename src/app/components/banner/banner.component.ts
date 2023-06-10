@@ -19,6 +19,5 @@ export class BannerComponent implements OnInit {
   closeBanner(): void {
     this.showBanner = !this.showBanner;
     localStorage.setItem('banner', 'accepted');
-    console.log("Show banner: ", this.showBanner);
   }
 }

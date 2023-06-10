@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './views/cart/cart.component';
 import { ShowBookComponent } from './views/books/show-book/show-book.component';
 import { FeedComponent } from './views/books/feed/feed.component';
-import { AuthorsComponent } from './views/authors/authors.component';
 import { IndexComponent } from './views/index/index.component';
 import { LoginComponent } from './views/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -27,7 +26,6 @@ const routes: Routes = [
   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
   {path: 'genero/:id', component:FeedComponent, data: { animation: 'fader'}},
   {path: 'buscar/:filter', component:SearchComponent, data: { animation: 'fader'}},
-  {path: 'autores', component:AuthorsComponent, data: { animation: 'fader'}},
   {path: 'index', component:IndexComponent, data: { animation: 'fader'}},
   {path: '**', redirectTo:"index", data: { animation: 'fader'}},
   {path: ' ', redirectTo:"index", data: { animation: 'fader'}}

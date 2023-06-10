@@ -76,7 +76,7 @@
                 <select (change)="alterTapa()" [(ngModel)]="selectedType" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-orange-500 text-base pl-3 pr-10">
                   <option *ngIf="libro.tipo.includes('tapadura')" [ngValue]="'tapadura'" [selected]="libro.tipo === 'tapadura'">Tapa dura</option>
                   <option *ngIf="libro.tipo.includes('tapablanda')" [ngValue]="'tapablanda'" [selected]="libro.tipo === 'tapablanda'">Tapa blanda</option>
-                  <option *ngIf="libro.tipo.includes('ebook')" [ngValue]="'ebook'" [selected]="libro.tipo === 'formatodigital'">Formato digital</option>
+                  <option *ngIf="libro.tipo.includes('ebook')" [ngValue]="'ebook'" [selected]="libro.tipo === 'ebook'">eBook</option>
                 </select>
                 <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">

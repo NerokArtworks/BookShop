@@ -21,7 +21,6 @@ export class InfoComponent {
   }
 
   editUserInfo() {
-    console.log("Call edit user info");
     this.callEditUserInfo.emit(this.user);
   }
 }

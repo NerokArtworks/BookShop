@@ -43,6 +43,7 @@
           <div class="price drop-shadow-md rounded-xl p-2 flex flex-col gap-1 transition absolute w-full h-auto opacity-0 lg:w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
             <span *ngIf="l.tipo.includes('tapadura')">Tapa dura</span>
             <span *ngIf="l.tipo.includes('tapablanda') && !l.tipo.includes('tapadura')">Tapa blanda</span>
+            <span *ngIf="l.tipo.includes('ebook')">eBook</span>
               <span *ngIf="l.tipo == 'ebook'">eBook</span>
             <div class="grid place-items-center grid-cols-2 mx-2 border-t border-gray-400">
               <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
@@ -54,7 +55,7 @@
         </div>
         <div>
           <h4 class="text-2xl text-gray-900 uppercase">{{l.titulo}}</h4>
-          <span class="text-xs 2xl:text-sm text-gray-600 uppercase">({{l.saga}})</span>
+          <span *ngIf="l.saga.length > 1" class="text-xs 2xl:text-sm text-gray-600 uppercase">({{l.saga}})</span>
           <span class="block text-sm text-orange-500 capitalize">{{l.autor}}</span>
         </div>
       </div>

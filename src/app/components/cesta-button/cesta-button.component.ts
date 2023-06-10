@@ -54,6 +54,9 @@ export class CestaButtonComponent implements OnInit{
     // Agregar un nuevo libro al array
     // Borro la descripcion y la sinopsis para liberar espacio de la cookie
     // this.libro.descripcion = "";
+    if (this.libro.tipo.includes('ebook')) {
+      this.libro.tapa = 'ebook';
+    }
     // this.libro.sinopsis = "";
     if (carrito.push(this.libro)) {
       let cestaIcon = document.querySelector('.cesta-icon');

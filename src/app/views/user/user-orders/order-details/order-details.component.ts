@@ -54,7 +54,6 @@ export class OrderDetailsComponent {
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("Cancelando pedido...");
         // El usuario confirmó la cancelación, realiza la acción necesaria
         this.callDeleteOrder.emit(this.pedido);
       }

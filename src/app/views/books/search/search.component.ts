@@ -56,7 +56,6 @@ export class SearchComponent {
     // Aplico la oferta y su género a cada libro
     const that = this;
     if (this.libros && this.generos) {
-      console.log("Libros y géneros cargados");
       this.libros.forEach(l => {
         l.oferta = (l.precio * 0.95).toFixed(2);
       });

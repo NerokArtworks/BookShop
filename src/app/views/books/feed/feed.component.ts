@@ -49,10 +49,8 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     const id_genero = this.route.snapshot.paramMap.get('id');
-    console.log(`Cargando datos del género: ${id_genero}`);
     if (id_genero) {
       this.id_genero = parseInt(id_genero, 10);
-      console.log(`Convertido: ${id_genero}`);
       this.LibroService.getLibrosByGenero(this.id_genero).subscribe(libro => {(this.libros = libro); (this.results = libro); this.loadFeed();});
       this.LibroService.getGeneros().subscribe(genero => {(this.generos = genero); this.loadFeed();});
     }
@@ -64,7 +62,6 @@ export class FeedComponent implements OnInit {
     // Aplico la oferta y su género a cada libro
     const that = this;
     if (this.libros && this.generos) {
-      console.log("Libros y géneros cargados");
       this.libros.forEach(l => {
         l.oferta = (l.precio * 0.95).toFixed(2);
         that.generos.forEach(g => {
@@ -72,7 +69,6 @@ export class FeedComponent implements OnInit {
             l.genero = g.titulo;
             that.genero = l.genero;
             that.pageLoaded = true;
-            console.log("Libro encontrado: ", l, "Género: ", that.genero);
           }
         });
       });

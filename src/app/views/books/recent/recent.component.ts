@@ -37,7 +37,7 @@ export class RecentComponent implements OnInit{
       lastWeeek.setDate(lastWeeek.getDate() - 7);
     
       libros.forEach(libro => {
-        if (new Date(libro.fecha_publi) < lastWeeek && that.novedades.length <= 7) {
+        if (new Date(libro.fecha_publi) > lastWeeek && that.novedades.length <= 7) {
           libro.oferta = (libro.precio * 0.95).toFixed(2);
           that.novedades.push(libro);
         }

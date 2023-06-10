@@ -33,7 +33,6 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     if (token) {
-      console.log("Usuario logueado");
       this.RestService.getUserByJWT(token).subscribe(usuario => {
         (this.usuario = usuario);
 
@@ -54,7 +53,6 @@ export class ProfileComponent implements OnInit{
     if (this.libro) {
       this.hideTab = true;
     }
-    console.log(`Cambiado al tab: ${id}`);
   }
 
   esLibro(param: any): param is Libro {
@@ -72,7 +70,6 @@ export class ProfileComponent implements OnInit{
   }
 
   deleteOrder(pedido: Pedido) {
-    console.log("Delete order Profile");
     let index = this.pedidos.indexOf(pedido);
     if (index !== -1) {
       this.pedidos.splice(index, 1);
@@ -80,7 +77,6 @@ export class ProfileComponent implements OnInit{
       // Borro el pedido y vuelvo a la lista de pedidos
       this.currentTab = '2';
       this.showSuccessAlert();
-      console.log("ID del pedido a borrar: ",  pedido.id);
     }
   }
 

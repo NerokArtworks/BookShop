@@ -33,7 +33,6 @@ export class EditUserInfoComponent {
       );
     } else {
       // this.showWarn = true;
-      console.log("haciendo submit inválido");
     }
   }
 

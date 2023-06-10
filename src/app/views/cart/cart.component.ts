@@ -138,8 +138,6 @@ export class CartComponent implements OnInit{
         this.totalSinDescuento = this.total - GASTOS_ENVIO;
       }
     }
-    
-    console.log(`Total compra: ${this.total} €`);
   }
 
   createOrder() {
@@ -166,8 +164,6 @@ export class CartComponent implements OnInit{
       usuario: this.user,
       result: null,
     }
-    console.log("Detalles del pedido: ", detallesPedido);
-    console.log("Pedido: ", pedido);
 
     // Comprobar saldo
     if (this.user.saldo >= pedido.importe) {
@@ -216,7 +212,6 @@ export class CartComponent implements OnInit{
     if (form.valid) {
       let that = this;
       this.descuentos.forEach(descuento => {
-        console.log("Descuento disponible", descuento);
         if (descuento.titulo == form.value.descuento) {
           // Descuento encontrado
           that.descuentoValido = descuento;
@@ -226,7 +221,6 @@ export class CartComponent implements OnInit{
             if (pedido.descuento != null) {
               if (pedido.descuento == descuento.id) {
                 // Ya usado
-                console.log("Descuento ya usado", descuento);
                 that.descuentoUsado = true;
               }
             }
@@ -235,22 +229,18 @@ export class CartComponent implements OnInit{
           // Si se ha encontrado un descuento y no está usado
           if (!this.descuentoUsado) {
             that.calculateTotal(false, that.descuentoValido);
-            console.log("Descuento encontrado", descuento);
           } else {
             that.descuentoValido = null;
             that.calculateTotal();
-            console.log("Descuento ya usado, inválido", form.value.descuento, descuento.titulo);
           }
           
         } else {
           that.descuentoValido = null;
           that.calculateTotal();
-          console.log("Descuento inválido", form.value.descuento, descuento.titulo);
         }
       });
     } else {
       this.descuentoValido = null;
-      console.log("Descuento inválido", form.value.descuento);
       this.calculateTotal();
     }
   }
@@ -273,14 +263,12 @@ export class CartComponent implements OnInit{
     const that = this;
     detallesPedido.forEach(detalle => {
       let libroStock!: Libro;
-      console.log("detalle libro", detalle.libro);
       that.restarStock(detalle.libro, detalle.cantidad);
     });
   }
 
   restarStock(libro: Libro, stock: any) {
     libro.stock = (Number(libro.stock) - stock).toFixed(0);
-    console.log("Stock restante del libro " + libro.titulo + ": " + libro.stock);
     this.RestService.updateLibro(libro).subscribe();
   }
 }

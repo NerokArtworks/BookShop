@@ -1,9 +1,9 @@
 <nav class="border-gray-200 fixed w-full bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] shadow-md">
     <div
         class="flex flex-wrap justify-between mt-4 md:mt-0 md:h-full items-center mx-auto lg:max-w-screen-lg xl:max-w-screen-xl px-6 py-2.5">
-        <a href="#" class="flex items-center">
+        <a href="#" class="flex items-center text-center">
             <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" /> -->
-            <span class="self-center text-xl font-semibold whitespace-nowrap">WhatTheBook</span>
+            <img src="./../../../assets/logo/logo.png" class="w-32 md:w-20 lg:w-48 h-auto" alt="WhatTheBook Logo">
         </a>
 
         <!-- Show when user login -->
@@ -40,8 +40,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="block p-3 rounded-lg hover:bg-gray-100">
-                                        <div class="font-semibold">Drama</div>
+                                    <a [routerLink]="['/genero', 3]" routerLinkActive="router-link-active" class="block p-3 rounded-lg hover:bg-gray-100">
+                                        <div class="font-semibold">Novela Histórica</div>
                                         <span class="text-sm font-light text-gray-500">Connect with third-party tools that you're
                                             already using.</span>
                                     </a>
@@ -63,7 +63,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="block p-3 rounded-lg hover:bg-gray-100">
+                                    <a [routerLink]="['/genero', 4]" routerLinkActive="router-link-active" class="block p-3 rounded-lg hover:bg-gray-100">
                                         <div class="font-semibold">Novela negra</div>
                                         <span class="text-sm font-light text-gray-500">Connect with third-party tools that you're
                                             already using.</span>
@@ -81,11 +81,11 @@
                       </div>
                     </li>
                     <li>
-                        <!-- <a href="#" routerLinkActive="router-link-active"
-                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0">e-Books</a> -->
-                        <a routerLinkActive="router-link-active"
+                        <a [routerLink]="['/ebooks']" routerLinkActive="router-link-active"
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0">eBooks</a>
+                        <!-- <a routerLinkActive="router-link-active"
                             class="block relative py-2 pl-3 pr-4 text-gray-500 rounded md:p-0">eBooks
-                            <span class="w-full absolute dashed h-full top-1/2 left-0"></span></a>
+                            <span class="w-full absolute dashed h-full top-1/2 left-0"></span></a> -->
                     </li>
                     <li>
                         <a [routerLink]="['/novedades']" routerLinkActive="router-link-active"

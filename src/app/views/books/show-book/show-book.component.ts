@@ -28,7 +28,6 @@ export class ShowBookComponent implements OnInit{
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.id = id;
-    console.log("Viendo libro id: " + this.id);
     this.LibroService.getLibro(id).subscribe(libro => {
       (this.libro = libro); 
       console.log(libro); 
@@ -50,7 +49,6 @@ export class ShowBookComponent implements OnInit{
   alterTapa() {
     this.libro.tapa = this.selectedType;
     this.calcularPrecio();
-    console.log("Tipo seleccionado: ", this.libro.tapa);
   }
 
   calcularPrecio() {  
@@ -75,7 +73,6 @@ export class ShowBookComponent implements OnInit{
   addToCart() {
     this.animarBoton();
     // CESTASERVICE
-    console.log("Añadiendo con tapa: ", this.libro.tapa);
     if (!this.CestaService.addItem(this.libro)) {
       this.showStockAlert = true;
     }

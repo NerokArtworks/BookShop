@@ -9,7 +9,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PoesiaComponent } from './components/sections/poesia/poesia.component';
 import { EBooksComponent } from './components/sections/e-books/e-books.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AuthorsComponent } from './views/authors/authors.component';
 import { PrimaryButtonComponent } from './components/primary-button/primary-button.component';
 import { CestaButtonComponent } from './components/cesta-button/cesta-button.component';
 import { BannerComponent } from './components/banner/banner.component';
@@ -65,7 +64,6 @@ import { PartnerComponent } from './views/user/partner/partner.component';
     PoesiaComponent,
     EBooksComponent,
     FooterComponent,
-    AuthorsComponent,
     PrimaryButtonComponent,
     CestaButtonComponent,
     BannerComponent,
