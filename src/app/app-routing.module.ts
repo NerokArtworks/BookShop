@@ -13,15 +13,17 @@ import { SearchComponent } from './views/books/search/search.component';
 import { RecentComponent } from './views/books/recent/recent.component';
 import { TopSellersComponent } from './views/books/top-sellers/top-sellers.component';
 import { ProfileComponent } from './views/user/profile/profile.component';
+import { EbooksComponent } from './views/books/ebooks/ebooks.component';
 
 const routes: Routes = [
   {path: 'admin', canActivate:[AuthGuard], component:DashboardComponent, data: { animation: 'fader' }},
   {path: 'user', canActivate:[AuthGuard], component:ProfileComponent, data: { animation: 'fader' }},
   {path: 'register', component:RegisterComponent, data: { animation: 'fader' }},
   {path: 'login', component:LoginComponent, data: { animation: 'fader' }},
-  {path:'logout', canActivate:[AuthGuard], component:LogoutComponent},
+  {path: 'logout', canActivate:[AuthGuard], component:LogoutComponent},
   {path: 'cesta', component:CartComponent, data: { animation: 'fader' }},
   {path: 'novedades', component:RecentComponent, data: { animation: 'fader'}},
+  {path: 'ebooks', component:EbooksComponent, data: { animation: 'fader'}},
   {path: 'top', component:TopSellersComponent, data: { animation: 'fader'}},
   {path: 'ver/:id', component:ShowBookComponent, data: { animation: 'fader'}},
   {path: 'genero/:id', component:FeedComponent, data: { animation: 'fader'}},

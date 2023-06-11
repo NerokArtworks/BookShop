@@ -10,4 +10,5 @@ export interface Pedido {
     usuario: Usuario;
     tracking?: number;
     result: string|null;
+    entregado?: Number;
 }

@@ -1,0 +1,64 @@
+<section class="w-full breadcumb relative px-6 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0]">
+  <div class="container max-w-screen-lg xl:max-w-screen-xl h-full flex items-center mx-auto font-bold">
+      <span class="font-light"><a href="/home" class="hover:underline hover:text-orange-500 px-1">Inicio / </a></span>eBooks
+  </div>
+</section>
+<main class="main-wrapper relative feed">
+  <section *ngIf="pageLoaded" class="md:max-w-screen-md px-4 transition-all xl:max-w-screen-xl mx-auto min-h-screen nav-margin mb-20">
+    <!-- section header -->
+    <header class="text-center mx-auto mb-8 px flex flex-col gap-4 w-3/4 md:w-full lg:max-w-screen-lg mt-2">
+      <h2 class="text-2xl leading-normal hero-title font-bold text-gray-800">
+          eBooks
+      </h2>
+      <form class="flex items-center">
+        <label for="simple-search" class="sr-only">Search</label>
+        <div class="relative w-full">
+            <div class="absolute inset-y-0 left-0 flex items-center bg-orange-400 rounded-lg border border-orange-400 px-2.5 pointer-events-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+            </div>
+            <input (input)="buscarLibros($event)" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 focus-visible:outline-orange-400 transition-all duration-300 ease block w-full pl-12 p-2.5" placeholder="Busca libros por título, autor o saga" required>
+        </div>
+        <!-- <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 transition-all duration-200 ease focus:ring-4 focus:outline-none focus:ring-orange-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <span class="sr-only">Search</span>
+        </button> -->
+      </form>
+
+      <!-- <input type="text" id="search-input" placeholder="Buscar por título o autor" (input)="buscarLibros($event)"> -->
+      <div id="search-results w-full">
+        <p *ngIf="results.length === 0">No se encontraron resultados.</p>
+        <p *ngIf="results.length > 1" class="text-start text-sm text-gray-400">Mostrando {{results.length}} resultados</p>
+        <p *ngIf="results.length === 1" class="text-start text-sm text-gray-400">Mostrando {{results.length}} resultado</p>
+      </div>
+    </header>
+
+    <div class="grid gap-y-10 gap-x-2 xl:w-10/12 2xl:w-full mx-auto items-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <!-- Item 1 -->
+      <div class="relative space-y-4 text-center" *ngFor="let l of getBooksForPage() | slice: startIndex:endIndex" [@fadeAnimation]>
+        <div class="relative book">
+          <a [routerLink]="['/ver', l.id]" routerLinkActive="router-link-active" >
+            <img class="w-64 h-64 md:w-10/12 md:h-fit mx-auto transition duration-200 hover:brightness-110 hover:drop-shadow-lg object-contain md:object-cover cursor-pointer rounded-xl"
+          src="../../../assets/img/{{l.portada}}" alt="Carátula {{l.titulo}}" loading="lazy" />
+          </a>
+          <div class="price drop-shadow-md rounded-xl p-2 flex flex-col gap-1 transition absolute w-full h-auto opacity-0 lg:w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
+            <span *ngIf="l.tipo.includes('tapadura')">Tapa dura</span>
+            <span *ngIf="l.tipo.includes('tapablanda') && !l.tipo.includes('tapadura')">Tapa blanda</span>
+            <span *ngIf="l.tipo.includes('ebook')">eBook</span>
+            <div class="grid place-items-center grid-cols-2 mx-2 border-t border-gray-400">
+              <span class="text-gray-900 font-thin line-through decoration-1 text-xs">
+                {{l.precio}} €</span>
+              <span class="text-orange-500 font-black">{{l.oferta}} €</span>
+            </div>
+            <app-cesta-button [id]="l.id"></app-cesta-button>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-2xl text-gray-900 uppercase">{{l.titulo}}</h4>
+          <span *ngIf="l.saga.length > 1" class="text-xs 2xl:text-sm text-gray-600 uppercase">({{l.saga}})</span>
+          <span class="block text-sm text-orange-500 capitalize">{{l.autor}}</span>
+        </div>
+      </div>
+    </div>
+    <mat-paginator class="xl:w-10/12 2xl:w-full mx-auto mt-5" [length]="results.length" [pageSize]="15" [pageSizeOptions]="[15, 30, 45]" (page)="onPageChange($event)"></mat-paginator>
+  </section>
+</main>

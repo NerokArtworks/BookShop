@@ -28,7 +28,7 @@ export class OrdersComponent {
   protected sales: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   customPaginatorIntl: MatPaginatorIntl = new MatPaginatorIntl();
-  
+
   startIndex = 0; // Índice de inicio de la página actual
   endIndex = 5; // Índice de fin de la página actual
 
@@ -48,7 +48,7 @@ export class OrdersComponent {
       width: '400px',
       data: { message: '¿Estás seguro de que quieres eliminar el pedido?' }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // El usuario confirmó la eliminación, realiza la acción necesaria
@@ -67,19 +67,19 @@ export class OrdersComponent {
 
   numberFormat(number: any, decimals = 0, decimalSeparator = '.', thousandsSeparator = ',') {
     number = parseFloat(number);
-    
+
     // Verificar si es un número válido
     if (!isFinite(number) || isNaN(number)) {
       return number;
     }
-    
+
     // Redondear el número a la cantidad de decimales especificada
     number = number.toFixed(decimals);
-    
+
     // Separar los miles con el separador correspondiente
     let parts = number.split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
-    
+
     // Unir las partes del número con los separadores correspondientes
     return parts.join(decimalSeparator);
   }
@@ -91,11 +91,11 @@ export class OrdersComponent {
       this.ordenActual.columna = columna;
       this.ordenActual.direccion = 'asc';
     }
-  
+
     this.pedidos.sort((a, b) => {
       const valorA = this.obtenerValorOrdenamiento(a, columna);
       const valorB = this.obtenerValorOrdenamiento(b, columna);
-  
+
       if (typeof valorA === 'string' && typeof valorB === 'string') {
         return this.ordenActual.direccion === 'asc' ? valorA.localeCompare(valorB) : valorB.localeCompare(valorA);
       } else {
@@ -125,7 +125,7 @@ export class OrdersComponent {
     this.callShowOrder.emit(pedido);
   }
 
-  // Paginator 
+  // Paginator
   onPageChange(event: any): void {
     const pageEvent = event as PageEvent;
     this.startIndex = pageEvent.pageIndex * pageEvent.pageSize;
@@ -136,5 +136,9 @@ export class OrdersComponent {
 
   getBooksForPage(): any[] {
     return this.pedidos;
+  }
+
+  setDelivered(pedido: Pedido) {
+    pedido.entregado = pedido.entregado == 1 ? 0 : 1;
   }
 }

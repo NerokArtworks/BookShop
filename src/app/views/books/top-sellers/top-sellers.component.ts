@@ -4,6 +4,7 @@ import { RestService } from 'src/app/services/api/rest.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Pedido } from 'src/app/interfaces/Pedido';
 
 @Component({
   selector: 'app-top-sellers',
@@ -23,26 +24,16 @@ import { Router } from '@angular/router';
 })
 export class TopSellersComponent {
   protected libros!: Libro[];
-  protected novedades: Libro[] = [];
+  protected pedidos!: Pedido[];
+  protected topSellers: Libro[] = [];
   protected filtro!: string;
 
   constructor(private RestService: RestService, private router: Router) { }
 
   ngOnInit(): void {
-    let that = this;
     const lastWeeek = new Date();
     lastWeeek.setDate(lastWeeek.getDate() - 7);
-    this.RestService.getLibros().subscribe(libros => {
-      const lastWeeek = new Date();
-      lastWeeek.setDate(lastWeeek.getDate() - 7);
-    
-      libros.forEach(libro => {
-        if (new Date(libro.fecha_publi) < lastWeeek && that.novedades.length <= 7) {
-          libro.oferta = (libro.precio * 0.95).toFixed(2);
-          that.novedades.push(libro);
-        }
-      })
-    });
+    this.RestService.getPedidos().subscribe(pedidos => {(this.pedidos = pedidos); this.getTopSellers(); })
   }
 
   buscarLibros(form:NgForm) {
@@ -51,4 +42,39 @@ export class TopSellersComponent {
       this.router.navigate(['/buscar/' + form.value.filtro]);
     }
   }
+
+  getTopSellers() {
+    let that = this;
+    const librosVendidos: { [libroId: string]: number } = {};
+
+    // Recorre el array de pedidos y sus detalles para acumular las cantidades vendidas por cada libro
+    this.pedidos.forEach((pedido) => {
+      if (pedido.detallesPedidos != null) {
+        pedido.detallesPedidos.forEach((detalle) => {
+          const libroId = detalle.libro;
+          const cantidad = detalle.cantidad;
+
+          if (librosVendidos[libroId]) {
+            librosVendidos[libroId] += cantidad;
+          } else {
+            librosVendidos[libroId] = cantidad;
+          }
+        });
+      }
+    });
+
+    // Ordena los libros según la cantidad de ventas en orden descendente
+    const librosOrdenados = Object.keys(librosVendidos).sort(
+      (a, b) => librosVendidos[b] - librosVendidos[a]
+    );
+
+    console.log("Top sellers: ", librosOrdenados);
+    // Retorna los libros más vendidos (puedes ajustar la cantidad según tus necesidades)
+    const bestSellers = librosOrdenados.slice(0, 8); // Por ejemplo, aquí se obtienen los 5 libros más vendidos
+
+    bestSellers.forEach(id => {
+      that.RestService.getLibro(id).subscribe(libro => { (that.topSellers.push(libro)); });
+    });
+  }
+
 }

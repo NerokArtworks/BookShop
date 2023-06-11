@@ -1,9 +1,9 @@
 <nav class="border-gray-200 fixed w-full bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] shadow-md">
     <div
-        class="flex flex-wrap justify-between mt-4 md:mt-0 md:h-full items-center mx-auto lg:max-w-screen-lg xl:max-w-screen-xl px-6 py-2.5">
-        <a href="#" class="flex items-center text-center">
+        class="flex flex-wrap justify-between mt-0 h-full md:h-full items-center mx-auto lg:max-w-screen-lg xl:max-w-screen-xl px-6 py-2.5">
+        <a href="#" class="flex items-center text-center w-32 md:w-20 lg:w-36 xl:w-40 2xl:w-48">
             <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" /> -->
-            <img src="./../../../assets/logo/logo.png" class="w-32 md:w-20 lg:w-48 h-auto" alt="WhatTheBook Logo">
+            <img src="./../../../assets/logo/logo.png" class="w-full h-auto" alt="WhatTheBook Logo">
         </a>
 
         <!-- Show when user login -->
@@ -47,8 +47,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="block p-3 rounded-lg hover:bg-gray-100">
-                                        <div class="font-semibold">Ciencia Ficción</div>
+                                    <a [routerLink]="['/genero', 5]" class="block p-3 rounded-lg hover:bg-gray-100">
+                                        <div class="font-semibold">Poesía</div>
                                         <span class="text-sm font-light text-gray-500">Connect with third-party tools that you're
                                             already using.</span>
                                     </a>
@@ -70,8 +70,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="block p-3 rounded-lg hover:bg-gray-100">
-                                        <div class="font-semibold">Suspense</div>
+                                    <a [routerLink]="['/genero', 6]" class="block p-3 rounded-lg hover:bg-gray-100">
+                                        <div class="font-semibold">Novela de Terror</div>
                                         <span class="text-sm font-light text-gray-500">Connect with third-party tools that you're
                                             already using.</span>
                                     </a>

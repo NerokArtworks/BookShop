@@ -1,22 +1,28 @@
 <!-- component -->
 <div class="bg-white">
     <div class="flex justify-center min-h-screen">
-        <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url('../../../assets/img/fire.jpg'); background-position: center; background-attachment: fixed; background-size: cover;">
-            <!-- background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) -->
-            <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
-                <div>
-                    <h2 class="text-4xl font-bold text-white">WhatTheBook</h2>
-                    
-                    <p class="max-w-xl mt-3 text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae</p>
-                </div>
+      <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url('../../../assets/img/fire.jpg'); background-position: center; background-attachment: fixed; background-size: cover;">
+        <!-- background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) -->
+        <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
+            <div>
+                <h2 class="text-4xl font-bold text-white">WhatTheBook</h2>
+
+                <p class="max-w-xl mt-3 text-gray-300">La mejor tienda de libros y eBooks online del momento. Inicia sesión, crea una cuenta, o échale primero un vistazo al catálogo. ¡Encontrarás de todo!</p>
+
+                <button [routerLink]="['/index']" routerLinkActive="router-link-active" class="relative mt-3 inline-flex items-center justify-center mb-2 mr-2 border-[2px] border-orange-400 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-transparent hover:text-white focus:ring-4 focus:outline-none focus:ring-orange-200">
+                    <span class="relative uppercase text-gray-300 transition-all duration-100 ease group-hover:text-white px-5 py-2.5 transition-all ease-in duration-75 bg-gradient-to-br group-hover:from-orange-100 group-hover:to-orange-500 rounded-md group-hover:bg-opacity-0">
+                        Ver catálogo
+                    </span>
+                    </button>
             </div>
         </div>
-        
+      </div>
+
         <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6 nav-distance py-8">
             <div class="flex-1">
                 <div class="text-center">
                     <h2 class="text-4xl font-bold text-center text-gray-700">WhatTheBook</h2>
-                    
+
                     <p class="mt-3 text-orange-400">Regístrate para crear tu cuenta</p>
                 </div>
 
@@ -39,7 +45,7 @@
                             <input autocomplete="off" ngModel required minlength="5" name="username" id="username" placeholder="Tu usuario" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             <div *ngIf="formulario.controls['username']" [class.show-alert]="formulario.controls['username'].invalid && (formulario.controls['username'].dirty || formulario.controls['username'].touched)" class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">Mínimo 5 caracteres</div>
                         </div>
-                    
+
                         <div class="mt-3 grid grid-cols-1 md:grid-cols-2 md:gap-2">
                             <div>
                                 <div class="flex justify-between mb-2">
@@ -59,9 +65,12 @@
 
                         <div class="mt-3">
                             <label for="email" class="block mb-2 text-sm text-gray-600">Correo electrónico *</label>
-                            <input type="email" autocomplete="off" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" id="email" name="email" placeholder="ejemplo@ejemplo.com" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                            <div *ngIf="formulario.controls['email']" [class.show-alert]="formulario.controls['email'].invalid && (formulario.controls['email'].dirty || formulario.controls['email'].touched)" class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">Correo electrónico inválido</div>
-                        </div>                        
+                            <input type="email" (keyup)="checkEmail($event)" autocomplete="off" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" id="email" name="email" placeholder="ejemplo@ejemplo.com" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            <div *ngIf="formulario.controls['email']" [class.show-alert]="(formulario.controls['email'].invalid && (formulario.controls['email'].dirty || formulario.controls['email'].touched) || invalidEmail)" class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">
+                              <ng-container *ngIf="!invalidEmail">Correo electrónico inválido</ng-container>
+                              <ng-container *ngIf="invalidEmail">Este correo electrónico ya está vinculado con una cuenta existente</ng-container>
+                            </div>
+                        </div>
 
                         <div class="mt-3 grid grid-cols-1 md:grid-cols-2 md:gap-2">
                             <div>
@@ -79,7 +88,7 @@
                                 <div *ngIf="formulario.controls['fecha_nac']" [class.show-alert]="formulario.controls['fecha_nac'].invalid && (formulario.controls['fecha_nac'].dirty || formulario.controls['fecha_nac'].touched)" class="text-sm text-red-400 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">Selecciona una fecha</div>
                             </div>
                         </div>
-                        
+
 
                         <div class="mt-3">
                             <div class="flex justify-between mb-2">
@@ -88,7 +97,7 @@
                             <input type="password" ngModel required pattern="^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" name="password" id="password" placeholder="Tu contraseña" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             <div *ngIf="formulario.controls['password']" [class.show-alert]="formulario.controls['password'].invalid && (formulario.controls['password'].dirty || formulario.controls['password'].touched)" class="text-sm text-red-500 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">Al menos 8 caracteres, una mayúscula y un número</div>
                         </div>
-                        
+
                         <div class="mt-3">
                             <div class="flex justify-between mb-2">
                                 <label for="password2" class="text-sm text-gray-600">Repite la contraseña *</label>
@@ -96,8 +105,8 @@
                             <input type="password" ngModel required name="password2" id="password2" placeholder="Tu contraseña" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-orange-400 focus:ring-orange-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             <div *ngIf="formulario.controls['password2']" [class.show-alert]="formulario.controls['password2'].value !== formulario.controls['password'].value" class="text-sm text-red-500 opacity-0 translate-y-100 transition-all duration-300 ease-in-out">Las contraseñas no coinciden</div>
                         </div>
-                        
-                        
+
+
 
                         <div class="mt-4">
                             <button

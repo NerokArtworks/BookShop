@@ -44,6 +44,8 @@ import { UserOrdersComponent } from './views/user/user-orders/user-orders.compon
 import { OrderDetailsComponent } from './views/user/user-orders/order-details/order-details.component';
 import { EditUserInfoComponent } from './views/user/info/edit-user-info/edit-user-info.component';
 import { PartnerComponent } from './views/user/partner/partner.component';
+import { NovedadesComponent } from './components/sections/novedades/novedades.component';
+import { EbooksComponent } from './views/books/ebooks/ebooks.component';
 
 
 // const appRoutes:Routes = [
@@ -92,6 +94,8 @@ import { PartnerComponent } from './views/user/partner/partner.component';
     OrderDetailsComponent,
     EditUserInfoComponent,
     PartnerComponent,
+    NovedadesComponent,
+    EbooksComponent,
   ],
   imports: [
     BrowserModule,

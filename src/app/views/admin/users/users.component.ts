@@ -1,4 +1,4 @@
-import { Component, Inject, Input, ViewChild } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/Usuario';
 import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -19,13 +19,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ])
   ]
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   @Input() usuarios!: Usuario[];
   protected ordenActual: { columna: string, direccion: 'asc' | 'desc' } = { columna: 'id', direccion: 'asc' };
 
+  protected socios: number = 0;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   customPaginatorIntl: MatPaginatorIntl = new MatPaginatorIntl();
-  
+
   startIndex = 0; // Índice de inicio de la página actual
   endIndex = 5; // Índice de fin de la página actual
 
@@ -39,28 +41,28 @@ export class UsersComponent {
   }
 
   ngOnInit() {
-    // this.usuarios.forEach(p => {
-    //   this.sales += p.importe;
-    //   // p.tracking = Math.floor(Math.random() * 101);
-    //   p.tracking = Math.floor(Math.random() * 21) * 5;
-    // });
+    this.usuarios.forEach(user => {
+      if (user.socio == 1) {
+        this.socios++;
+      }
+    });
   }
 
   numberFormat(number: any, decimals = 0, decimalSeparator = '.', thousandsSeparator = ',') {
     number = parseFloat(number);
-    
+
     // Verificar si es un número válido
     if (!isFinite(number) || isNaN(number)) {
       return number;
     }
-    
+
     // Redondear el número a la cantidad de decimales especificada
     number = number.toFixed(decimals);
-    
+
     // Separar los miles con el separador correspondiente
     let parts = number.split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
-    
+
     // Unir las partes del número con los separadores correspondientes
     return parts.join(decimalSeparator);
   }
@@ -72,11 +74,11 @@ export class UsersComponent {
       this.ordenActual.columna = columna;
       this.ordenActual.direccion = 'asc';
     }
-  
+
     this.usuarios.sort((a, b) => {
       const valorA = this.obtenerValorOrdenamiento(a, columna);
       const valorB = this.obtenerValorOrdenamiento(b, columna);
-  
+
       if (typeof valorA === 'string' && typeof valorB === 'string') {
         return this.ordenActual.direccion === 'asc' ? valorA.localeCompare(valorB) : valorB.localeCompare(valorA);
       } else {
@@ -99,12 +101,14 @@ export class UsersComponent {
         return registro.apellidos;
       case 'dni':
         return registro.dni;
+      case 'fecha_creacion':
+        return registro.fecha_creacion;
       default:
         return null;
     }
   }
 
-  // Paginator 
+  // Paginator
   onPageChange(event: any): void {
     const pageEvent = event as PageEvent;
     this.startIndex = pageEvent.pageIndex * pageEvent.pageSize;

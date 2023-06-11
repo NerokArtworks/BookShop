@@ -14,6 +14,7 @@ import Swiper from 'swiper';
 export class CarouselComponent {
   @ViewChild('slider', {static: false}) slider!: ElementRef;
   @Input() autor!: string;
+  @Input() genero!: number;
   @Input() id!: string;
 
   swiper!: Swiper;
@@ -29,7 +30,9 @@ export class CarouselComponent {
   // Cargar libros
   ngOnInit(): void {
     if (this.autor) {
-      this.LibroService.getLibrosByAutor(this.autor).subscribe(libro => { (this.libros = libro); console.log(libro); this.loadBooks(); });
+      this.LibroService.getLibrosByAutor(this.autor).subscribe(libro => { (this.libros = libro); this.loadBooks(); });
+    } else if (this.genero) {
+      this.LibroService.getLibrosByGenero(this.genero).subscribe(libro => { (this.libros = libro); this.loadBooks(); });
     }
   }
 

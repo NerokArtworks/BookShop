@@ -16,14 +16,14 @@
                 —Esta semana han llegado libros alucinantes, no seas tímido y echa un vistazo. —dijo el comerciante—.
                 ¡He dicho que les eches un vistazo a los libros! No sigas leyéndome a mi y lee los libros, que para eso están.
               </p>
-              <p class="uppercase text-xl text-gray-600">Novedades esta semana</p>
+              <p class="uppercase text-xl text-gray-600 mb-5 md:mb-0">Novedades esta semana</p>
             </div>
             <div class="grid gap-12 transition-all duration-200 xl:w-10/12 2xl:w-full mx-auto mt-2 md:mt-10 items-start md:grid-cols-4">
               <!-- Item 1 -->
               <div class="relative space-y-4 text-center" *ngFor="let l of novedades" [@fadeAnimation]>
                 <div class="relative book transition duration-200">
                   <a [routerLink]="['/ver', l.id]" routerLinkActive="router-link-active" >
-                    <img class="w-64 h-64 md:w-40 md:h-40 lg:w-10/12 lg:h-full mx-auto transition duration-200 hover:brightness-110 hover:drop-shadow-lg object-contain md:object-cover cursor-pointer rounded-xl"
+                    <img class="w-64 h-min md:w-40 lg:w-10/12 lg:h-full mx-auto transition duration-200 hover:brightness-110 hover:drop-shadow-lg object-cover cursor-pointer rounded-xl"
                   src="../../../assets/img/{{l.portada}}" alt="Carátula {{l.titulo}}" loading="lazy" />
                   </a>
                   <div class="price drop-shadow-md rounded-xl p-2 hidden md:flex flex-col gap-1 transition absolute w-full h-auto opacity-0 lg:w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-2 bg-gradient-to-t from-[#FFFFFF] to-[#F9E6E0] z-index-20 text-center">
